@@ -1,0 +1,5 @@
+All sound files used in alignment. Renamed, resampled (16 kHz)
+
+File name pattern: 
+passages: <speakerID>_passage.wav
+frame sentences: <speakerID>_frame_rep<rep no.>.wav
