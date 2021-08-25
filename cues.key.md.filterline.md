@@ -1,0 +1,66 @@
+sturdy
+moment-INST
+mane-ACC
+to dislocate
+shop
+distractor
+wide
+emblem-ACC
+seventy-ACC
+mane-INST
+seventy-INST
+distractor
+experience-ACC
+loose-INST
+robe-INST
+bundle
+distractor
+loan-word
+sling
+glass-ACC
+distractor
+to announce
+emblem-INST
+tail-ACC
+distractor
+seventy-COLL
+glass-INST
+below
+cross-eyed
+moment-ACC
+distractor
+paddle
+pencil lead
+ink-slab
+singing
+slave-INST
+distractor
+range
+loose-ACC
+flame-INST
+frisky
+six-COLL
+distractor
+victory
+flame-ACC
+seven-COLL
+four-COLL
+distractor
+kidney-INST
+softening
+hypocrite
+lap-dog-ACC
+experience-INST
+distractor
+brush-ACC
+to win-CAUS
+robe-ACC
+brush-INST
+lap-dog-INST
+grey
+tail-INST
+over
+slave-ACC
+crystal
+kidney-ACC
+to soften

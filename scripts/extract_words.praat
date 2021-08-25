@@ -1,6 +1,7 @@
 # Auromita
 # July 19, 2021
 # Create a list of non-silent words from the word tier of a textgrid
+# (edited version to extract transcript for frame sentences. To get list of words, remove lines 17-20)
 
 form Parse TextGrid...
   #sentence File \passages\F1_passages.TextGrid

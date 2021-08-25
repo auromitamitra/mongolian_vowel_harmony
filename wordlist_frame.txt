@@ -1,0 +1,83 @@
+ʧ͡ʰiɮger 	sturdy
+ʦ͡ʊːraːr 	moment-INST
+teɮijg 	mane-ACC
+ʦ͡aːrʊːɮ 	to dislocate
+teɮguːr 	shop
+xɔjor 	distractor
+teɮger 	wide
+suɮijg 	emblem-ACC
+taɮiːg 	seventy-ACC
+teɮeːr 	mane-INST
+taɮaːr 	seventy-INST
+aʧ͡iɮ 	distractor
+tɔɮiːg 	experience-ACC
+sʊɮaːr 	loose-INST
+teːɮeːr 	robe-INST
+pɔːtɔɮ 	bundle
+atiɮ 	distractor
+ʦ͡eːɮper 	loan-word
+tuːguːr 	sling
+ʃiɮijg 	glass-ACC
+minij 	distractor
+ʦ͡arɮa 	to announce
+suɮteːr 	emblem-INST
+suːɮijg 	tail-ACC
+pʰaɮ 	distractor
+taɮʊːɮ 	seventy-COLL
+ʃiɮeːr 	glass-INST
+tɔːgʊːr 	below
+sœɮœr 	cross-eyed
+ʦ͡ʊːriːg 	moment-ACC
+ʧ͡ʰat 	distractor
+pʊɮʊːr 	paddle
+ʦ͡ʊraɮtʰ 	pencil lead
+ʦ͡ʊːrʊːɮ 	ink-slab
+tʊːɮaɮ 	singing
+pɔːɮɔːr 	slave-INST
+ʦ͡am 	distractor
+purteɮ 	range
+sʊɮiːg 	loose-ACC
+tœɮœœr 	flame-INST
+tuːɮger 	frisky
+ʦ͡ʊrgʊːɮ 	six-COLL
+xaɮ 	distractor
+tijɮeɮtʰ 	victory
+tœɮijg 	flame-ACC
+tɔɮʊːɮ 	seven-COLL
+tœrwuːɮ 	four-COLL
+ɮam 	distractor
+pœœrœœr 	kidney-INST
+ʦ͡œœɮrœɮtʰ 	softening
+piɮpuːr 	hypocrite
+paːɮiːg 	lap-dog-ACC
+tɔɮɔːr 	experience-INST
+waːr 	distractor
+pijrijg 	brush-ACC
+tijɮuːɮ 	to win-CAUS
+teːɮijg 	robe-ACC
+pijreːr 	brush-INST
+paːɮaːr 	lap-dog-INST
+saːraɮ 	grey
+suːɮeːr 	tail-INST
+teːguːr 	over
+pɔːɮiːg 	slave-ACC
+pɔɮɔr 	crystal
+pœrijg 	kidney-ACC
+ʦ͡œœɮruːɮ 	to soften
+
+----------------------------------------------
+
+Distractors:
+
+xɔjor 
+aʧ͡iɮ 
+atiɮ 
+minij 
+pʰaɮ 
+ʧ͡ʰat 
+ʦ͡am 
+xaɮ 
+ɮam 
+waːr
+
+xɔjor|aʧ͡iɮ|atiɮ|minij|pʰaɮ|ʧ͡ʰat|ʦ͡am|xaɮ|ɮam|waːr

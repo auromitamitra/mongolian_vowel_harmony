@@ -3,13 +3,13 @@
 # Remove duplicate items from a file, and write into another file
 
 # read in the file with duplicates
-f = open ('../lexicon_tmp.txt', encoding="utf8")
+f = open ('../phones_temp.txt', encoding="utf8")
 text = f.read()
 f.close()
 words = text.split('\n')
 
 # make file to write results
-final = open('../lexicon.txt','w', encoding="utf8")
+final = open('../phones.txt','w', encoding="utf8")
 
 # list for storing unique items
 words_unique = []
@@ -30,5 +30,5 @@ final.close()
 
 
 print("done!")
-print("total words: ", len(words))
-print("unique words:", len(words_unique))
+print("total items: ", len(words))
+print("unique items:", len(words_unique))
