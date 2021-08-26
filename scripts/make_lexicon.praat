@@ -11,7 +11,8 @@ endform
 
 file$ = chooseReadFile$: "Open a Text Grid"
 Read from file: file$
-
+#select TextGrid 'file$'
+#textgrid = selected("TextGrid")
 
 word_intervals = Get number of intervals: word_tier
 phone_intervals = Get number of intervals: phone_tier
@@ -38,8 +39,7 @@ for wi from 1 to word_intervals
     endfor
     appendInfoLine: word$, tab$, phonestring$
     removeObject: phoneobject
-    selectObject: "TextGrid F1_r1"
-    # fix later; make variable for file ID and call that
+    selectObject 'f01_frame_rep1.TextGrid'
   endif
 endfor 
 
