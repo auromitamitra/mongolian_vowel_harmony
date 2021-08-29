@@ -37,7 +37,7 @@ pɔːɮɔːr 	slave-INST
 ʦ͡am 	distractor
 purteɮ 	range
 sʊɮiːg 	loose-ACC
-tœɮœœr 	flame-INST
+tœɮœœr 	flame-INST   -----------------------
 tuːɮger 	frisky
 ʦ͡ʊrgʊːɮ 	six-COLL
 xaɮ 	distractor
@@ -46,8 +46,8 @@ tœɮijg 	flame-ACC
 tɔɮʊːɮ 	seven-COLL
 tœrwuːɮ 	four-COLL
 ɮam 	distractor
-pœœrœœr 	kidney-INST
-ʦ͡œœɮrœɮtʰ 	softening
+pœœrœœr 	kidney-INST -------------------------
+ʦ͡œœɮrœɮtʰ 	softening -----------------
 piɮpuːr 	hypocrite
 paːɮiːg 	lap-dog-ACC
 tɔɮɔːr 	experience-INST
@@ -63,7 +63,7 @@ teːguːr 	over
 pɔːɮiːg 	slave-ACC
 pɔɮɔr 	crystal
 pœrijg 	kidney-ACC
-ʦ͡œœɮruːɮ 	to soften
+ʦ͡œœɮruːɮ 	to soften ----------------
 
 ----------------------------------------------
 
