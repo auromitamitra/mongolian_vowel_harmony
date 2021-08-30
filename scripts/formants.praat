@@ -8,12 +8,14 @@
 ########## CONTROL VARIABLES ##########
 seg_tier = 2
 word_tier = 1
-directory$ = "../temp/"
-data_path$ = "../temp/"
+# input folder:
+directory$ = "../annotated_files/frame/"
+# output folder:
+data_path$ = "../annotated_files/frame/"
 data_file$ = "formants.txt"
 maximum_formant = 5500
 number_of_formants = 5
-filler_word$ = "(xɔjor|aʧ͡iɮ|atiɮ|minij|pʰaɮ|ʧ͡ʰat|ʦ͡am|xaɮ|ɮam|waːr|pi|gesen)"
+filler_word$ = "^(xɔjor|aʧ͡iɮ|atiɮ|minij|pʰaɮ|ʧ͡ʰat|ʦ͡am|xaɮ|ɮam|waːr|pi|gesen)$"
 vowel$ = "^(a|aː|e|eː|i|iː|o|oː|u|uː|ʊ|ʊː|ɔ|ɔː|œ|œœ)$"
 ## note: vowel length diacritic in annotations not colon (:), different character (ː)
 
@@ -25,7 +27,7 @@ numberOfFiles = Get number of strings
 clearinfo
 
 # HEADER LINE
-printline filename'tab$'word'tab$'vowel'tab$'f1_5'tab$'f2_5'tab$'f1_15'tab$'f2_15'tab$'f1_25'tab$'f2_25'tab$'f1_35'tab$'f2_32'tab$'f1_45'tab$'f2_45'tab$'f1_55'tab$'f2_55'tab$'f1_65'tab$'f2_65'tab$'f1_75'tab$'f2_75'tab$'f1_85'tab$'f2_85'tab$'f1_95'tab$'f2_95
+printline filename'tab$'word'tab$'vowel'tab$'f1_t5'tab$'f2_t5'tab$'f1_t15'tab$'f2_t15'tab$'f1_t25'tab$'f2_t25'tab$'f1_t35'tab$'f2_t35'tab$'f1_t45'tab$'f2_t45'tab$'f1_t55'tab$'f2_t55'tab$'f1_t65'tab$'f2_t65'tab$'f1_t75'tab$'f2_t75'tab$'f1_t85'tab$'f2_t85'tab$'f1_t95'tab$'f2_t95
 
 
 for ifile to numberOfFiles
@@ -131,3 +133,4 @@ for ifile to numberOfFiles
     Remove
 endfor
 
+printline done!
