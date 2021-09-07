@@ -9,9 +9,19 @@ library(tidyverse)
 df <- read_excel("formants.xlsx")
 str(df)     
 
+
 # change character variables to factors
 df <- df %>% mutate_if(is.character,as.factor)
 str(df)
+
+# change œ labels to o
+df <- df %>%
+  mutate(word = gsub("œœ", "o:", df$word))
+
+df<- df %>%
+  mutate(word = gsub("œ", "o", df$word)) %>%
+  mutate(vowel = str_replace_all(vowel, "œœ", "o:")) %>%
+  mutate(vowel = str_replace_all(vowel, "œ", "o"))
 
 # separate odd and even numbered rows (extract every nth row starting from 1: df %>% filter(row_number() %% n == 1))
 df_odd <- df %>% filter(row_number() %% 2 == 1) ## extract odd rows
@@ -20,11 +30,13 @@ df_even <- df %>% filter(row_number() %% 2 == 0) ## extract even rows
 # change column names
 df_odd <- df_odd %>% 
   rename(v1 = vowel) %>%
-  rename_with(~ gsub("_", "_v1_", .x))
+  rename_with(~ gsub("_", "_v1_", .x)) %>%
+  
 
 df_even <- df_even %>% 
   rename(v2 = vowel) %>%
-  rename_with(~ gsub("_", "_v2_", .x))
+  rename_with(~ gsub("_", "_v2_", .x)) %>%
+  
 
 # combine data frames
 new_df <- df_odd %>%
@@ -34,12 +46,15 @@ new_df <- df_odd %>%
   mutate(temp = filename, .after = filename) %>%
   separate(temp, into = c("speaker","extra","iteration"), sep = "_") %>%
   mutate(extra = NULL) %>%
-  mutate(iteration = str_replace(iteration, "rep", ""))
+  mutate(iteration = str_replace(iteration, "rep", "")) %>%
+  mutate_if(is.character,as.factor)
+  
+  
 
 # write into csv file
 write.csv(new_df,file = "formants_temp.csv")
 
-## Note: this messes up the IPA characters in excel. 
+## Note: this messes up the IPA characters in excel 
 ## Open new excel sheet "formants_new.csv" --> data --> import --> from text --> (select file + encoding) --> save
 
 

@@ -54,4 +54,19 @@ Otherwise:
 
 ---
 
-&rarr; ignore words with initial /i/, if only 2 syllables
+### Rounding harmony:
+Only concerns open vowels (e, a, o, O)
+
+o and O -- can occur freely in the initial syllable
+
+In non-initial syllable: o and O can occur ONLY if the initial vowel is also round and low, i.e. the same (o or O). 
+
+But not the other way round: Not the case that if the first vowel is o or O, the following ones obligatorily have to be round. They can be anything. But not quite 'anything', there's a catch:
+
+o can be followed by anything (anything non-pharyngeal, i.e. /e/), but O cannot be followed /a/. So O can only be followed by O (among the open vowels; not concerned with high vowels here)
+
+i --> transparent for rounding harmony
+
+if there is an u or U, any *open* vowels following them must be *non-round* (parallel to how any vowel folling /i/ must be non-pharyngeal)
+
+

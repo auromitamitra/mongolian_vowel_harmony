@@ -1,3 +1,5 @@
+All with meaning (66):
+
 ʧ͡ʰiɮger 	sturdy
 ʦ͡ʊːraːr 	moment-INST
 teɮijg 	mane-ACC
@@ -37,7 +39,7 @@ pɔːɮɔːr 	slave-INST
 ʦ͡am 	distractor
 purteɮ 	range
 sʊɮiːg 	loose-ACC
-tœɮœœr 	flame-INST   -----------------------
+tœɮœœr 	flame-INST   
 tuːɮger 	frisky
 ʦ͡ʊrgʊːɮ 	six-COLL
 xaɮ 	distractor
@@ -46,8 +48,8 @@ tœɮijg 	flame-ACC
 tɔɮʊːɮ 	seven-COLL
 tœrwuːɮ 	four-COLL
 ɮam 	distractor
-pœœrœœr 	kidney-INST -------------------------
-ʦ͡œœɮrœɮtʰ 	softening -----------------
+pœœrœœr 	kidney-INST 
+ʦ͡œœɮrœɮtʰ 	softening
 piɮpuːr 	hypocrite
 paːɮiːg 	lap-dog-ACC
 tɔɮɔːr 	experience-INST
@@ -63,21 +65,134 @@ teːguːr 	over
 pɔːɮiːg 	slave-ACC
 pɔɮɔr 	crystal
 pœrijg 	kidney-ACC
-ʦ͡œœɮruːɮ 	to soften ----------------
+ʦ͡œœɮruːɮ 	to soften 
 
 ----------------------------------------------
+Targets only (59):
 
-Distractors:
-
+ʧ͡ʰiɮger 
+ʦ͡ʊːraːr 
+teɮijg 
+ʦ͡aːrʊːɮ 
+teɮguːr 
 xɔjor 
+teɮger 
+suɮijg 
+taɮiːg 
+teɮeːr 
+taɮaːr 
 aʧ͡iɮ 
+tɔɮiːg 
+sʊɮaːr 
+teːɮeːr 
+pɔːtɔɮ 
 atiɮ 
+ʦ͡eːɮper 
+tuːguːr 
+ʃiɮijg 
 minij 
-pʰaɮ 
-ʧ͡ʰat 
-ʦ͡am 
-xaɮ 
-ɮam 
-waːr
+suɮteːr 
+suːɮijg 
+taɮʊːɮ 
+ʃiɮeːr 
+tɔːgʊːr 
+sœɮœr 
+ʦ͡ʊːriːg 
+pʊɮʊːr 
+ʦ͡ʊraɮtʰ 
+ʦ͡ʊːrʊːɮ 
+tʊːɮaɮ 
+pɔːɮɔːr
+purteɮ 
+sʊɮiːg 
+tœɮœœr 
+tuːɮger 
+ʦ͡ʊrgʊːɮ
+tijɮeɮtʰ 
+tœɮijg 
+tɔɮʊːɮ 
+tœrwuːɮ
+pœœrœœr 
+ʦ͡œœɮrœɮtʰ 
+piɮpuːr 
+paːɮiːg 
+tɔɮɔːr
+pijrijg 
+tijɮuːɮ 
+teːɮijg 
+pijreːr 
+paːɮaːr 
+saːraɮ 
+suːɮeːr 
+teːguːr 
+pɔːɮiːg 
+pɔɮɔr 
+pœrijg 
+ʦ͡œœɮruːɮ 
 
-xɔjor|aʧ͡iɮ|atiɮ|minij|pʰaɮ|ʧ͡ʰat|ʦ͡am|xaɮ|ɮam|waːr
+* ʦ͡arɮa: removed from targets (in non-initial syllables, single vowel letters denote epenthetic vowels, and in word-final position they are mute)
+
+Filler words regex: ^(ʦ͡arɮa|pʰaɮ|ʧ͡ʰat|ʦ͡am|xaɮ|ɮam|waːr|pi|gesen)$
+
+----------------------
+Harmony type for target words (59):
+
+ʧ͡ʰiɮger	ATR
+ʦ͡ʊːraːr	ATR
+teɮijg	ATR
+ʦ͡aːrʊːɮ	ATR
+teɮguːr	ATR
+xɔjor	non-harmonic
+teɮger	ATR
+suɮijg	ATR
+taɮiːg	non-harmonic
+teɮeːr	ATR
+taɮaːr	ATR
+aʧ͡iɮ	non-harmonic
+tɔɮiːg	non-harmonic
+sʊɮaːr	ATR
+teːɮeːr	ATR
+pɔːtɔɮ	rounding
+atiɮ	non-harmonic
+ʦ͡eːɮper ATR
+tuːguːr	ATR
+ʃiɮijg	ATR
+minij	ATR
+suɮteːr	ATR
+suːɮijg	ATR
+taɮʊːɮ	ATR
+ʃiɮeːr	ATR
+tɔːgʊːr	ATR
+soɮor	rounding
+ʦ͡ʊːriːg	non-harmonic
+pʊɮʊːr	ATR
+ʦ͡ʊraɮtʰ	ATR
+ʦ͡ʊːrʊːɮ	ATR
+tʊːɮaɮ	ATR
+pɔːɮɔːr	rounding
+purteɮ	ATR
+sʊɮiːg	non-harmonic
+toɮo:r	ATR
+tuːɮger	ATR
+ʦ͡ʊrgʊːɮ	ATR
+tijɮeɮtʰ	ATR
+toɮijg	ATR
+tɔɮʊːɮ	ATR
+torwuːɮ	ATR
+po:ro:r	ATR
+ʦ͡o:ɮroɮtʰ	ATR
+piɮpuːr	ATR
+paːɮiːg	non-harmonic
+tɔɮɔːr	rounding
+pijrijg	ATR
+tijɮuːɮ	ATR
+teːɮijg	ATR
+pijreːr	ATR
+paːɮaːr	ATR
+saːraɮ	ATR
+suːɮeːr	ATR
+teːguːr	ATR
+pɔːɮiːg	non-harmonic
+pɔɮɔr	rounding
+porijg	ATR
+ʦ͡o:ɮruːɮ	ATR

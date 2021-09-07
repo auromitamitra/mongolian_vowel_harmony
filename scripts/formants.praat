@@ -15,7 +15,7 @@ data_path$ = "../annotated_files/frame/"
 data_file$ = "formants.txt"
 maximum_formant = 5500
 number_of_formants = 5
-filler_word$ = "^(xɔjor|aʧ͡iɮ|atiɮ|minij|pʰaɮ|ʧ͡ʰat|ʦ͡am|xaɮ|ɮam|waːr|pi|gesen)$"
+filler_word$ = "^(ʦ͡arɮa|pʰaɮ|ʧ͡ʰat|ʦ͡am|xaɮ|ɮam|waːr|pi|gesen)$"
 vowel$ = "^(a|aː|e|eː|i|iː|o|oː|u|uː|ʊ|ʊː|ɔ|ɔː|œ|œœ)$"
 ## note: vowel length diacritic in annotations not colon (:), different character (ː)
 

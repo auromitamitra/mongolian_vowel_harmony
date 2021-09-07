@@ -45,7 +45,7 @@ procedure to0x .t
 endproc
 ###############################################################################################
 
-@to0x: TextGrid f01_frame_rep1
+@to0x: 
 
 writeInfoLine: "Done"
 
