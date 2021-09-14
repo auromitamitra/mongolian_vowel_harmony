@@ -27,7 +27,8 @@ numberOfFiles = Get number of strings
 clearinfo
 
 # HEADER LINE
-printline filename'tab$'word'tab$'vowel'tab$'f1_t5'tab$'f2_t5'tab$'f1_t15'tab$'f2_t15'tab$'f1_t25'tab$'f2_t25'tab$'f1_t35'tab$'f2_t35'tab$'f1_t45'tab$'f2_t45'tab$'f1_t55'tab$'f2_t55'tab$'f1_t65'tab$'f2_t65'tab$'f1_t75'tab$'f2_t75'tab$'f1_t85'tab$'f2_t85'tab$'f1_t95'tab$'f2_t95
+# printline filename'tab$'word'tab$'vowel'tab$'f1_5'tab$'f2_5'tab$'f1_15'tab$'f2_15'tab$'f1_25'tab$'f2_25'tab$'f1_35'tab$'f2_35'tab$'f1_45'tab$'f2_45'tab$'f1_55'tab$'f2_55'tab$'f1_65'tab$'f2_65'tab$'f1_75'tab$'f2_75'tab$'f1_85'tab$'f2_85'tab$'f1_95'tab$'f2_95
+printline filename'tab$'word'tab$'vowel'tab$'f1_t1'tab$'f2_t1'tab$'f1_t2'tab$'f2_t2'tab$'f1_t3'tab$'f2_t3'tab$'f1_t4'tab$'f2_t4'tab$'f1_t5'tab$'f2_t5'tab$'f1_t6'tab$'f2_t6'tab$'f1_t7'tab$'f2_t7'tab$'f1_t8'tab$'f2_t8'tab$'f1_t9'tab$'f2_t9'tab$'f1_t10'tab$'f2_t10
 
 
 for ifile to numberOfFiles
