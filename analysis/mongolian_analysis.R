@@ -1,6 +1,7 @@
 library(readxl)
 library(dplyr)
 library(lme4)
+library(phonR)
 
 # read in data
 df <- read_excel("formants_combined.xlsx") %>%
@@ -22,6 +23,10 @@ detach(df)
 # subsets for harmonic and non-harmonic sequences
 df_nhar <- filter(df_lobanov, harmony_type == "non-harmonic")
 df_har <- filter(df_lobanov, harmony_type != "non-harmonic")
+
+df_ATR <- filter(df_lobanov, harmony_type == "ATR")
+df_rounding <- filter(df_lobanov, harmony_type == "rounding")
+
 
 ## plots
 
@@ -83,12 +88,472 @@ with(df_lobanov, plotVowels(f1_v2_t5, f2_v2_t5,
                         poly.line = TRUE, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
                         pretty = T))
 
-## models
+## models for F1
 attach(df_lobanov)
 
 #effect of v2 on v1
-v2tov1.model = lmer(f1_v1_t5 ~ f1_v2_t5 + v1 + (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), data = df_lobanov, REML= F) 
-null_v2tov1.model = lmer(f1_v1_t5 ~ v1 + (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), data = df_lobanov, REML= F)
+v1_vh.model = lmer(f1_v1_t5 ~ 
+                     v1+ f1_v2_t5 + 
+                     (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                     data = df_lobanov, REML = FALSE)
+summary(v1_vh.model)
 
-summary(v2tov1.model)
-anova(v2tov1.model, null_v2tov1.model)
+v1_null.model = lmer(f1_v1_t5 ~ 
+                       v1 + 
+                       (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                       data = df_lobanov, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f1_v2_t5 ~ 
+                     v2 + f1_v1_t5 + 
+                     (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                     data = df_lobanov, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f1_v2_t5 ~
+                       v2 +
+                       (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                       data = df_lobanov, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+
+detach(df_lobanov)
+
+# subset: non-harmonic
+attach(df_nhar)
+
+#effect of v2 on v1
+
+v1_vh.model = lmer(f1_v1_t5 ~ 
+                     v1+ f1_v2_t5 + 
+                     (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                   data = df_nhar, REML = FALSE)
+summary(v1_vh.model)
+
+v1_null.model = lmer(f1_v1_t5 ~ 
+                       v1 + 
+                       (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                     data = df_nhar, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f1_v2_t5 ~ 
+                     v2 + f1_v1_t5 + 
+                     (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                   data = df_nhar, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f1_v2_t5 ~
+                       v2 +
+                       (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                     data = df_nhar, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+
+detach(df_nhar)
+
+
+## subset: harmonic
+attach(df_har)
+
+#effect of v2 on v1
+
+v1_vh.model = lmer(f1_v1_t5 ~ 
+                     v1+ f1_v2_t5 + 
+                     (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                   data = df_har, REML = FALSE)
+summary(v1_vh.model)
+
+v1_null.model = lmer(f1_v1_t5 ~ 
+                       v1 + 
+                       (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                     data = df_har, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f1_v2_t5 ~ 
+                     v2 + f1_v1_t5 + 
+                     (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                     data = df_har, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f1_v2_t5 ~
+                       v2 +
+                       (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                       data = df_har, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+
+detach(df_har)
+
+
+## subset: ATR
+attach(df_ATR)
+
+#effect of v2 on v1
+
+v1_vh.model = lmer(f1_v1_t5 ~ 
+                     v1+ f1_v2_t5 + 
+                     (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                   data = df_ATR, REML = FALSE)
+summary(v1_vh.model)
+
+v1_null.model = lmer(f1_v1_t5 ~ 
+                       v1 + 
+                       (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                     data = df_ATR, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f1_v2_t5 ~ 
+                     v2 + f1_v1_t5 + 
+                     (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                     data = df_ATR, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f1_v2_t5 ~
+                       v2 +
+                       (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                       data = df_ATR, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+
+detach(df_ATR)
+
+
+## subset: rounding
+attach(df_rounding)
+
+#effect of v2 on v1
+
+v1_vh.model = lmer(f1_v1_t5 ~ 
+                     v1+ f1_v2_t5 + 
+                     (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                     data = df_rounding, REML = FALSE)
+summary(v1_vh.model)
+
+v1_null.model = lmer(f1_v1_t5 ~ 
+                       v1 + 
+                       (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                       data = df_rounding, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f1_v2_t5 ~ 
+                     v2 + f1_v1_t5 + 
+                     (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                     data = df_rounding, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f1_v2_t5 ~
+                       v2 +
+                       (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                       data = df_rounding, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+detach(df_rounding)
+
+#########################
+
+## models for F2
+attach(df_lobanov)
+
+#effect of v2 on v1
+v1_vh.model = lmer(f2_v1_t5 ~ 
+                     v1+ f2_v2_t5 + 
+                     (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                   data = df_lobanov, REML = FALSE)
+summary(v1_vh.model)
+
+v1_null.model = lmer(f2_v1_t5 ~ 
+                       v1 + 
+                       (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                     data = df_lobanov, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f2_v2_t5 ~ 
+                     v2 + f2_v1_t5 + 
+                     (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                   data = df_lobanov, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f2_v2_t5 ~
+                       v2 +
+                       (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                     data = df_lobanov, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+detach(df_lobanov)
+
+# subset: non-harmonic
+attach(df_nhar)
+
+#effect of v2 on v1
+
+v1_vh.model = lmer(f2_v1_t5 ~ 
+                     v1+ f2_v2_t5 + 
+                     (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                   data = df_nhar, REML = FALSE)
+summary(v1_vh.model)
+
+v1_null.model = lmer(f2_v1_t5 ~ 
+                       v1 + 
+                       (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                     data = df_nhar, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f2_v2_t5 ~ 
+                     v2 + f2_v1_t5 + 
+                     (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                   data = df_nhar, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f2_v2_t5 ~
+                       v2 +
+                       (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                     data = df_nhar, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+detach(df_nhar)
+
+
+## subset: harmonic
+attach(df_har)
+
+#effect of v2 on v1
+
+v1_vh.model = lmer(f2_v1_t5 ~ 
+                     v1+ f2_v2_t5 + 
+                     (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                   data = df_har, REML = FALSE)
+summary(v1_vh.model)
+
+v1_null.model = lmer(f2_v1_t5 ~ 
+                       v1 + 
+                       (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                     data = df_har, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f2_v2_t5 ~ 
+                     v2 + f2_v1_t5 + 
+                     (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                   data = df_har, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f2_v2_t5 ~
+                       v2 +
+                       (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                     data = df_har, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+detach(df_har)
+
+
+## subset: ATR
+attach(df_ATR)
+
+#effect of v2 on v1
+
+v1_vh.model = lmer(f2_v1_t5 ~ 
+                     v1+ f2_v2_t5 + 
+                     (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                   data = df_ATR, REML = FALSE)
+summary(v1_vh.model)
+
+v1_null.model = lmer(f2_v1_t5 ~ 
+                       v1 + 
+                       (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                     data = df_ATR, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f2_v2_t5 ~ 
+                     v2 + f2_v1_t5 + 
+                     (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                   data = df_ATR, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f2_v2_t5 ~
+                       v2 +
+                       (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                     data = df_ATR, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+detach(df_ATR)
+
+
+## subset: rounding
+attach(df_rounding)
+
+#effect of v2 on v1
+
+v1_vh.model = lmer(f2_v1_t5 ~ 
+                     v1+ f2_v2_t5 + 
+                     (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                   data = df_rounding, REML = FALSE)
+summary(v1_vh.model)
+
+v1_null.model = lmer(f2_v1_t5 ~ 
+                       v1 + 
+                       (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                     data = df_rounding, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f2_v2_t5 ~ 
+                     v2 + f2_v1_t5 + 
+                     (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                   data = df_rounding, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f2_v2_t5 ~
+                       v2 +
+                       (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                     data = df_rounding, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+detach(df_rounding)
+
+
+##### Interaction model #####
+
+## F1
+attach(df_lobanov)
+
+#effect of v2 on v1
+v1_vh.model = lmer(f1_v1_t5 ~ 
+                     v1 + harmony_type*f1_v2_t5 +
+                     (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                   data = df_lobanov, REML = FALSE)
+summary(v1_vh.model)
+
+v1_null.model = lmer(f1_v1_t5 ~ 
+                       v1 + f1_v2_t5 + 
+                       (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                     data = df_lobanov, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f1_v2_t5 ~ 
+                     v2 + harmony_type*f1_v1_t5 + 
+                     (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                   data = df_lobanov, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f1_v2_t5 ~
+                       v2 + f1_v1_t5 +
+                       (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                     data = df_lobanov, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+
+detach(df_lobanov)
+
+
+## F2
+attach(df_lobanov)
+
+#effect of v2 on v1
+v1_vh.model = lmer(f2_v1_t5 ~ 
+                     v1+ harmony_type*f2_v2_t5 + 
+                     (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                   data = df_lobanov, REML = FALSE)
+summary(v1_vh.model)
+
+v1_null.model = lmer(f2_v1_t5 ~ 
+                       v1 + f2_v2_t5 +
+                       (1+f2_v2_t5|speaker) + (1+f2_v2_t5|word), 
+                     data = df_lobanov, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+#effect of v1 on v2
+v2_vh.model = lmer(f2_v2_t5 ~ 
+                     v2 + harmony_type*f2_v1_t5 + 
+                     (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                   data = df_lobanov, REML = FALSE)
+summary(v2_vh.model)
+
+v2_null.model = lmer(f2_v2_t5 ~
+                       v2 + f2_v1_t5 + 
+                       (1+f2_v1_t5|speaker) + (1+f2_v1_t5|word), 
+                     data = df_lobanov, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+detach(df_lobanov)
+

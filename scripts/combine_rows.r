@@ -4,6 +4,7 @@
 
 library(readxl)
 library(tidyverse)
+library(phonR)
 
 # read in formant spreadsheet
 df <- read_excel("formants.xlsx")
