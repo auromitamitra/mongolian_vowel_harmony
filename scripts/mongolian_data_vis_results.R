@@ -1,4 +1,4 @@
-new_formant_data <- read_excel("formants_combined.xlsx")
+new_formant_data <- read_excel("formant_data/formants_combined.xlsx")
 new_formant_data <- new_formant_data %>% mutate_if(is.character,as.factor)
 
 attach(new_formant_data)

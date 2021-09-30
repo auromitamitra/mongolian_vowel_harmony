@@ -16,18 +16,18 @@ Simplest model: f1_v1_t5 ~ v1 + (1|speaker)+(1|word)
 
 4. Adding harmony_type: 
 - as fixed effect (to explain f1): no significant improvement
-- as interaction term (harmony_type*f1_v2_t5): convergence warning
+- as interaction term (harmony_type*f1_v2_t5)
 
 ## F1
 
-## Results from full dataset
+### Results from full dataset
 
 - both V1 and V2 model better than corresponding null models -- coarticulation robust in both directions
 - V2 model better than V1 model -- v1 explains v2 better than v2 explains v1
 - so direction of coarticulation: more left-to-right -- same direction as vowel harmony
 
 
-## Results from subsetting data by harmony type
+### Results from subsetting data by harmony type
 
 1. Non-harmonic: 
 - neither V1 not V2 are significantly better than corresponding null models -- coarticulation: less robust
@@ -47,14 +47,14 @@ Simplest model: f1_v1_t5 ~ v1 + (1|speaker)+(1|word)
 
 ## F2
 
-## Results from full dataset
+### Results from full dataset
 
 - same as F1
 - both V1 and V2 model better than corresponding null models -- coarticulation robust in both directions
 - V2 model better than V1 model -- v1 explains v2 better than v2 explains v1
 - so direction of coarticulation: more left-to-right -- same direction as vowel harmony
 
-## Results from subsetting data by harmony type
+### Results from subsetting data by harmony type
 
 1. Non-harmonic: 
 - same as F1

@@ -7,7 +7,7 @@ library(tidyverse)
 library(phonR)
 
 # read in formant spreadsheet
-df <- read_excel("formants.xlsx")
+df <- read_excel("formant_data/formants.xlsx")
 str(df)     
 # change character variables to factors
 df <- df %>% mutate_if(is.character,as.factor)
@@ -60,7 +60,7 @@ new_df <- df_odd %>%
   
 
 # write into csv file
-write.csv(new_df,file = "formants_temp.csv")
+write.csv(new_df,file = "formant_data/formants_temp.csv")
 
 ## Note: this messes up the IPA characters in excel 
 ## Open new excel sheet "formants_new.csv" --> data --> import --> from text --> (select file + encoding) --> save
