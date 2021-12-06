@@ -7,4 +7,4 @@ df <- read_excel("formant_data/formants_combined.xlsx") %>%
   mutate_if(is.character,as.factor)
 str(df)
 
-filter <- df %>% filter(filename == "f14_frame_rep4")
+filter <- df %>% filter(filename == "f05_frame_rep3")

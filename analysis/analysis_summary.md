@@ -16,7 +16,7 @@ Simplest model: f1_v1_t5 ~ v1 + (1|speaker)+(1|word)
 
 4. Adding harmony_type: 
 - as fixed effect (to explain f1): no significant improvement
-- as interaction term (harmony_type*f1_v2_t5)
+- as interaction term (harmony_type*f1_v2_t5): shown below
 
 ## F1
 
