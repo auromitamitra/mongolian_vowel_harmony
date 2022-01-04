@@ -2,6 +2,8 @@ library(readxl)
 library(dplyr)
 library(lme4)
 library(phonR)
+library(effectsize)
+library(lmerTest)
 
 # read in data
 df <- read_excel("formant_data/formants_combined.xlsx") %>%
@@ -88,20 +90,103 @@ with(df_lobanov, plotVowels(f1_v2_t5, f2_v2_t5,
                         poly.line = TRUE, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
                         pretty = T))
 
+#---------------------------------------------------------------------
+
+## For linear mixed models models, the data was mean-centered and scaled prior to analysis, as this increases the likelihood of convergence (Bates et al. 2015a, Eager&Roy 2017)
+df_lobanov.CS <- df_lobanov %>% mutate_if(is.numeric,scale)
+df_har.CS <- df_har %>% mutate_if(is.numeric,scale)
+df_nhar.CS <- df_nhar %>% mutate_if(is.numeric,scale)
+
+
 ## models for F1
-attach(df_lobanov)
+attach(df_lobanov.CS)
 
 #effect of v2 on v1
 v1_vh.model = lmer(f1_v1_t5 ~ 
                      v1+ f1_v2_t5 + 
                      (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                     data = df_lobanov, REML = FALSE)
+                     data = df_lobanov.CS, REML = FALSE)
 summary(v1_vh.model)
+
+
+# estimating effect size (eta squared) for the main variable (F1 of v2) from F-value or t-value (package used: "effectsize")
+v1_anova <- anova(v1_vh.model)
+v1_F <- v1_anova$`F value`[[2]] %>% signif(digits=3)
+v1_df <- v1_anova$`NumDF`[[2]] %>% signif(digits=3)
+v1_dendf <- v1_anova$`DenDF`[[2]] %>% signif(digits=3)
+
+F_to_eta2(4.5456,1,55.332) # F_to_eta2(Fvalue, NumDF, DenDF)
+
+v1_effect <- F_to_eta2(v1_F,v1_df,v1_dendf)$Eta2_partial %>% signif(digits=3) # partial eta squared value for explanatory variable 
+
+# parameters::model_parameters(v1_vh.model, effects = "fixed", df_method = "satterthwaite")
+# t_to_eta2(2.13, df_error = 55.33)
+
+#----
 
 v1_null.model = lmer(f1_v1_t5 ~ 
                        v1 + 
                        (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                       data = df_lobanov, REML = FALSE)
+                       data = df_lobanov.CS, REML = FALSE)
+summary(v1_null.model)
+
+
+anova(v1_vh.model, v1_null.model)
+
+
+#effect of v1 on v2
+v2_vh.model = lmer(f1_v2_t5 ~ 
+                     v2 + f1_v1_t5 + 
+                     (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                     data = df_lobanov.CS, REML = FALSE)
+summary(v2_vh.model)
+
+# estimating effect size (eta squared) for the main variable (F1 of v1) from F-value or t-value (package used: "effectsize")
+anova(v2_vh.model)
+F_to_eta2(19.387,1,41.412) # F_to_eta2(Fvalue, NumDF, DenDF)
+
+# parameters::model_parameters(v2_vh.model, effects = "fixed", df_method = "satterthwaite")
+# t_to_eta2(4.40, df_error = 41.41)
+
+
+
+v2_null.model = lmer(f1_v2_t5 ~
+                       v2 +
+                       (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+                       data = df_lobanov.CS, REML = FALSE)
+summary(v2_null.model)
+
+
+anova(v2_vh.model, v2_null.model)
+
+
+detach(df_lobanov.CS)
+
+## subset: non-harmonic
+attach(df_nhar.CS)
+
+#effect of v2 on v1
+
+v1_vh.model = lmer(f1_v1_t5 ~ 
+                     v1+ f1_v2_t5 + 
+                     (1|speaker) + (1|word), 
+                   data = df_nhar.CS, REML = FALSE)
+summary(v1_vh.model)
+
+#warning: singularity
+isSingular(v1_vh.model, tol = 1e-4)
+# removed random slopes
+
+# estimating effect size (eta squared) for the main variable (F1 of v2) from F-value or t-value (package used: "effectsize")
+anova(v1_vh.model)
+F_to_eta2(0.0012,1,441.98) # F_to_eta2(Fvalue, NumDF, DenDF)
+
+#----
+
+v1_null.model = lmer(f1_v1_t5 ~ 
+                       v1 + 
+                       (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
+                     data = df_nhar.CS, REML = FALSE)
 summary(v1_null.model)
 
 
@@ -110,77 +195,73 @@ anova(v1_vh.model, v1_null.model)
 #effect of v1 on v2
 v2_vh.model = lmer(f1_v2_t5 ~ 
                      v2 + f1_v1_t5 + 
-                     (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                     data = df_lobanov, REML = FALSE)
+                     (1|speaker) + (1|word), 
+                   data = df_nhar.CS, REML = FALSE)
 summary(v2_vh.model)
+#warning: singularity
+isSingular(v2_vh.model)
+# removed random slopes
+
+# # convergence error (Model failed to converge with 1 negative eigenvalue: -8.6e+02). Decreasing stoppin tolerances (from lme4 documentation):
+# 
+# fm1 = lmer(f1_v2_t5 ~ 
+#              v2 + f1_v1_t5 + 
+#              (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
+#            data = df_nhar, REML = FALSE)
+# 
+# ## 1. decrease stopping tolerances
+# strict_tol <- lmerControl(optCtrl=list(xtol_abs=1e-8, ftol_abs=1e-8))
+# if (all(fm1@optinfo$optimizer=="nloptwrap")) {
+#   fm1.tol <- update(fm1, control=strict_tol)
+# }
+# 
+# ## 2. center and scale predictors:
+# df_nhar.CS <- df_nhar %>% mutate_if(is.numeric,scale)
+# fm1.CS <- update(fm1, data=df_nhar.CS)
+# 
+# 
+
+# estimating effect size (eta squared) for the main variable (F1 of v1) from F-value or t-value (package used: "effectsize")
+anova(v2_vh.model)
+F_to_eta2(0.0273,1,30.9959) # F_to_eta2(Fvalue, NumDF, DenDF)
+
+
+#----
 
 v2_null.model = lmer(f1_v2_t5 ~
                        v2 +
                        (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                       data = df_lobanov, REML = FALSE)
+                     data = df_nhar.CS, REML = FALSE)
 summary(v2_null.model)
 
 
 anova(v2_vh.model, v2_null.model)
 
 
-detach(df_lobanov)
-
-# subset: non-harmonic
-attach(df_nhar)
-
-#effect of v2 on v1
-
-v1_vh.model = lmer(f1_v1_t5 ~ 
-                     v1+ f1_v2_t5 + 
-                     (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                   data = df_nhar, REML = FALSE)
-summary(v1_vh.model)
-
-v1_null.model = lmer(f1_v1_t5 ~ 
-                       v1 + 
-                       (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                     data = df_nhar, REML = FALSE)
-summary(v1_null.model)
-
-
-anova(v1_vh.model, v1_null.model)
-
-#effect of v1 on v2
-v2_vh.model = lmer(f1_v2_t5 ~ 
-                     v2 + f1_v1_t5 + 
-                     (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                   data = df_nhar, REML = FALSE)
-summary(v2_vh.model)
-
-v2_null.model = lmer(f1_v2_t5 ~
-                       v2 +
-                       (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                     data = df_nhar, REML = FALSE)
-summary(v2_null.model)
-
-
-anova(v2_vh.model, v2_null.model)
-
-
-detach(df_nhar)
+detach(df_nhar.CS)
 
 
 ## subset: harmonic
-attach(df_har)
+attach(df_har.CS)
 
 #effect of v2 on v1
 
 v1_vh.model = lmer(f1_v1_t5 ~ 
                      v1+ f1_v2_t5 + 
                      (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                   data = df_har, REML = FALSE)
+                   data = df_har.CS, REML = FALSE)
 summary(v1_vh.model)
+
+# estimating effect size (eta squared) for the main variable (F1 of v1) from F-value or t-value (package used: "effectsize")
+anova(v2_vh.model)
+F_to_eta2(0.0423,1,24.4534) # F_to_eta2(Fvalue, NumDF, DenDF)
+
+#----
 
 v1_null.model = lmer(f1_v1_t5 ~ 
                        v1 + 
                        (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                     data = df_har, REML = FALSE)
+                     data = df_har.CS, REML = FALSE)
 summary(v1_null.model)
 
 
@@ -190,20 +271,20 @@ anova(v1_vh.model, v1_null.model)
 v2_vh.model = lmer(f1_v2_t5 ~ 
                      v2 + f1_v1_t5 + 
                      (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                     data = df_har, REML = FALSE)
+                     data = df_har.CS, REML = FALSE)
 summary(v2_vh.model)
 
 v2_null.model = lmer(f1_v2_t5 ~
                        v2 +
                        (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                       data = df_har, REML = FALSE)
+                       data = df_har.CS, REML = FALSE)
 summary(v2_null.model)
 
 
 anova(v2_vh.model, v2_null.model)
 
 
-detach(df_har)
+detach(df_har.CS)
 
 
 ## subset: ATR

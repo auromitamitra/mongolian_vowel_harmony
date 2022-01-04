@@ -10,16 +10,18 @@ knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = TRUE)
 ```
 
 
-Load packages and data, create dataframes from Lobanov normalized formant values, and make three subsets: non-harmonic, ATR harmony, rounding harmony.
+Load packages and data, create dataframes from Lobanov normalized formant values, and make subsets for harmonic, non-harmonic, ATR harmony, rounding harmony.
 
 (note: file paths relative to the .Rmd file, not the global R environment)
 
 ```{r, include=FALSE}
 
 library(readxl)
-library(dplyr)
+library(tidyverse)
 library(lme4)
 library(phonR)
+library(effectsize)  # to get approximations of effect size from test statistics
+library(lmerTest) # to get t and F values from lme model
 
 # read in data
 df <- read_excel("../formant_data/formants_combined.xlsx") %>%
@@ -147,6 +149,19 @@ with(df_har, plotVowels(f1_v2_t5, f2_v2_t5,
 
 ## LME models
 
+For linear mixed models, the data was mean-centered and scaled prior to analysis, as this increases the likelihood of convergence (Bates et al. 2015a, Eager&Roy 2017):
+
+```{r}
+
+df_lobanov.CS <- df_lobanov %>% mutate_if(is.numeric,scale)
+df_har.CS <- df_har %>% mutate_if(is.numeric,scale)
+df_nhar.CS <- df_nhar %>% mutate_if(is.numeric,scale)
+
+
+rm(df,df_lobanov,df_har,df_nhar,df_rounding,df_ATR)
+
+```
+
 1. Random effects structure:
 
 Simplest model: F1 is predicted by the vowel identity. By-speaker and by-item intercepts.
@@ -156,7 +171,7 @@ Simplest model: F1 is predicted by the vowel identity. By-speaker and by-item in
 null.model = lmer(f1_v1_t5 ~ 
                   v1 +
                   (1|speaker)+(1|word),
-                  data = df_lobanov, REML = FALSE)
+                  data = df_lobanov.CS, REML = FALSE)
 ```
 
 We want to test the hypothesis that F1 is also predicted by F1 the other vowel (f1_v2). So modifying the random effects structure to add by-subject and by-item random slopes for the explanatory variable (expecting that each speaker and item differs in how f1_v2 affects f1_v1, i.e. in the extent of coarticulation):
@@ -166,7 +181,7 @@ We want to test the hypothesis that F1 is also predicted by F1 the other vowel (
 full.model = lmer(f1_v1_t5 ~ 
                   v1 +
                   (1+f1_v2_t5|speaker) +(1+f1_v2_t5|word),
-                  data = df_lobanov, REML = FALSE)
+                  data = df_lobanov.CS, REML = FALSE)
 
 anova(null.model, full.model)
 
@@ -181,120 +196,175 @@ This improves model fit.
 
 
 3.  Model names:
-- V1 model: v1 explained by v2
-- V2 model: v2 explained by v1
+- anticipatory model: v1 explained by v2
+- carryover model: v2 explained by v1
 
-In the analysis that follows, we compare the full models for V1 and V2 to their corresponding null models, then compare p-values from both ANOVAs (which is a greater improvement from the corresponding null model).
+In the analysis that follows, we compare the full models for anticipatory and carryover coarticulation to their corresponding null models.
 
 
 ## Models for F1
 
-### V1 model (effect of v2 on v1)
+### anticipatory model (effect of v2 on v1)
 
 ```{r}
 
 # full model
-v1_vh.model = lmer(f1_v1_t5 ~ 
+ant_vh.model = lmer(f1_v1_t5 ~ 
                      v1+ f1_v2_t5 + 
                      (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                     data = df_lobanov, REML = FALSE)
-summary(v1_vh.model)
+                     data = df_lobanov.CS, REML = FALSE)
+summary(ant_vh.model)
 
 # null model
-v1_null.model = lmer(f1_v1_t5 ~ 
+ant_null.model = lmer(f1_v1_t5 ~ 
                        v1 + 
                        (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                       data = df_lobanov, REML = FALSE)
-summary(v1_null.model)
+                       data = df_lobanov.CS, REML = FALSE)
+summary(ant_null.model)
 
 
-anova(v1_vh.model, v1_null.model)
+anova(ant_vh.model, ant_null.model)
 
 ```
 
 This shows that the F1 of v2 reliably predicts v1, showing coarticulation in the right-to-left (anticipatory) direction.
 
-### V2 model (effect of v1 on v2)
+### carryover model (effect of v1 on v2)
 ```{r}
 
 # full model
-v2_vh.model = lmer(f1_v2_t5 ~ 
+car_vh.model = lmer(f1_v2_t5 ~ 
                      v2 + f1_v1_t5 + 
                      (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                     data = df_lobanov, REML = FALSE)
-summary(v2_vh.model)
+                     data = df_lobanov.CS, REML = FALSE)
+summary(car_vh.model)
 
 # null model
-v2_null.model = lmer(f1_v2_t5 ~
+car_null.model = lmer(f1_v2_t5 ~
                        v2 +
                        (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                       data = df_lobanov, REML = FALSE)
-summary(v2_null.model)
+                       data = df_lobanov.CS, REML = FALSE)
+summary(car_null.model)
 
 
-anova(v2_vh.model, v2_null.model)
+anova(car_vh.model, car_null.model)
 
 ```
 
 This shows that the F1 of v1 reliably predicts v2, showing coarticulation in the left-to-right direction.
 
-The p-value for the V2 model is lower than that of the V1 model. This means that v2 is explained by v1 to a greater extent than the converse. Thus, coarticulation is greater in the left-to-right direction. This is the same direction as VH.
+Comparing the effect size of the explanatory variable (F1 of the other vowel) in the anticipatory vs the carryover model:
+
+```{r}
+
+# Anticipatory model: estimating effect size (partial eta squared) for the main variable (F1 of v2) from F-value (package: "effectsize")
+
+anova <- anova(ant_vh.model)
+F <- anova$`F value`[[2]] %>% signif(digits=3)
+df <- anova$`NumDF`[[2]] %>% signif(digits=3)
+dendf <- anova$`DenDF`[[2]] %>% signif(digits=3)
+
+# partial eta squared value for explanatory variable: F_to_eta2(Fvalue, NumDF, DenDF)
+ant_effect <- F_to_eta2(F,df,dendf)$Eta2_partial %>% signif(digits=3) 
+
+rm(anova,F,df,dendf)
+#---
+
+# Carryover model: estimating effect size (partial eta squared) for the main variable (F1 of v1) from F-value 
+anova <- anova(car_vh.model)
+F <- anova$`F value`[[2]] %>% signif(digits=3)
+df <- anova$`NumDF`[[2]] %>% signif(digits=3)
+dendf <- anova$`DenDF`[[2]] %>% signif(digits=3)
+
+# partial eta squared value for explanatory variable: F_to_eta2(Fvalue, NumDF, DenDF)
+car_effect <- F_to_eta2(F,df,dendf)$Eta2_partial %>% signif(digits=3) 
+
+rm(anova,F,df,dendf)
+
+# compare effect sizes
+ant_greater <- ant_effect > car_effect
+
+if(ant_greater == TRUE) {
+   print("Anticipatory effect greater than carryover.")
+} else {
+   print("Carryover effect is greater than anticipatory.")
+}
+
+```
 
 ---
 
 ## Interaction model:
 
-We want to see if the patterns of coarticulation differ across harmonic vs non-harmonic vowel sequences. That is, we want to see if the predictive power of the other vowel is mediated by harmony type. The next section compares the present full model to one where harmony_type is added as an interaction term.
-
-### V1 model (effect of v2 on v1)
+We want to see if patterns of coarticulation differ across harmonic vs non-harmonic vowel sequences, i.e. whether the predictive power of the other vowel is mediated by harmony type. The next section compares the present full model to one where harmony_type is added as an interaction term.
 
 ```{r}
 
-# interaction model
-v1_vh.model = lmer(f1_v1_t5 ~ 
+# coding harmony type as a binary variable (harmonic vs non-harmonic) and removing empty levels
+df_harmonytype.CS <- df_lobanov.CS %>%
+  mutate(harmony_type = str_replace_all(harmony_type, "ATR|rounding", "harmonic")) %>%
+  mutate_if(is.character,as.factor)
+
+df_har.CS <- df_har.CS %>%
+  mutate(harmony_type = str_replace_all(harmony_type, "ATR|rounding", "harmonic")) %>%
+  mutate_if(is.character,as.factor)
+
+df_nhar.CS$harmony_type <- droplevels(df_nhar.CS$harmony_type)
+
+
+```
+
+### Anticipatory model (effect of v2 on v1)
+
+```{r}
+
+# interaction model for anticipatory coarticulation
+ant_vh.model = lmer(f1_v1_t5 ~ 
                      v1 + harmony_type*f1_v2_t5 +
                      (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                   data = df_lobanov, REML = FALSE)
-summary(v1_vh.model)
+                   data = df_harmonytype.CS, REML = FALSE)
+summary(ant_vh.model)
 
 # null (non-interaction) model
-v1_null.model = lmer(f1_v1_t5 ~ 
+ant_null.model = lmer(f1_v1_t5 ~ 
                        v1 + f1_v2_t5 + 
                        (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                     data = df_lobanov, REML = FALSE)
-summary(v1_null.model)
+                     data = df_harmonytype.CS, REML = FALSE)
+summary(ant_null.model)
 
 
-anova(v1_vh.model, v1_null.model)
+anova(ant_vh.model, ant_null.model)
 
 ```
 
-The effect of hrmony type is not significant.
+The harmony type*F1_v2 interaction has a marginal effect in the full model, but the interaction model overall is not significanty better than the null model. Anticipatory coarticulation is not different across harmonic vs non-harmonic sequences.
 
 
-### V2 model (effect of v1 on v2)
+### Carryover model (effect of v1 on v2)
 
 ```{r}
 
-# interaction model
-v2_vh.model = lmer(f1_v2_t5 ~ 
+# interaction model for carryover coarticulation
+car_vh.model = lmer(f1_v2_t5 ~ 
                      v2 + harmony_type*f1_v1_t5 + 
                      (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                   data = df_lobanov, REML = FALSE)
-summary(v2_vh.model)
+                   data = df_harmonytype.CS, REML = FALSE)
+summary(car_vh.model)
 
 # null (non-interaction) model
-v2_null.model = lmer(f1_v2_t5 ~
+car_null.model = lmer(f1_v2_t5 ~
                        v2 + f1_v1_t5 +
                        (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                     data = df_lobanov, REML = FALSE)
-summary(v2_null.model)
+                     data = df_harmonytype.CS, REML = FALSE)
+summary(car_null.model)
 
 
-anova(v2_vh.model, v2_null.model)
+anova(car_vh.model, car_null.model)
 
 ```
+The harmony type*F1_v2 interaction has a significant effect in the full model, and improves model fit. That is, carryover coarticulation is moderated by harmony type.
 
+Overall, extent and patterns of coarticlation are different across harmonic vs. non-harmonic sequences. The next section compares coarticulation in harmonic s. non-harmonic words.
 ---
 
 ## Subsetting data by harmony type
@@ -307,49 +377,133 @@ anova(v2_vh.model, v2_null.model)
 ```{r}
 
 # full model
-v1_vh.model = lmer(f1_v1_t5 ~ 
+ant_vh.model = lmer(f1_v1_t5 ~ 
                      v1+ f1_v2_t5 + 
                      (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                   data = df_nhar, REML = FALSE)
-summary(v1_vh.model)
-
-# null model
-v1_null.model = lmer(f1_v1_t5 ~ 
-                       v1 + 
-                       (1+f1_v2_t5|speaker) + (1+f1_v2_t5|word), 
-                     data = df_nhar, REML = FALSE)
-summary(v1_null.model)
-
-
-anova(v1_vh.model, v1_null.model)
+                   data = df_nhar.CS, REML = FALSE)
+summary(ant_vh.model)
 
 ```
 
-### V2 model (effect of v1 on v2)
+Model fit is singular for both the full and null models. Since the subsetted dataframe is small, it is possible that the model is too complex. The random effect correlation for word is 1, which suggests an overparameterized model (Bates 2015). In the following steps, we simplify the random effects structure till the model converges. Running a PCA on the random effects covariance matrix to diagnose which parameters might be causing overfitting:
+
+```{r}
+
+summary(rePCA(ant_vh.model))
+
+```
+This shows that both for speaker and word, one principal component is enough to explain nearly 100% of the variance in the data. So we need a simpler model with reduced dimensionality. Following Bates (2015), we start by removing the correlation parameters for the random effects (zero-correlation-parameters model):
+
+```{r}
+ant_vh.model = lmer(f1_v1_t5 ~ 
+                     v1+ f1_v2_t5 + 
+                     (1+f1_v2_t5||speaker) + (1+f1_v2_t5||word), # || syntax: force correlation parameters to 0
+                   data = df_nhar.CS, REML = FALSE)
+summary(ant_vh.model)
+
+summary(rePCA(ant_vh.model))
+```
+This converges without problems, and the PCA shows a VCV (variance-covariance) matrix with full rank. (However, note that the proportion of variance explained by the random slope for both subject and item is small-- close to 0). Fitting the corresponding null model:
+
+```{r}
+
+# null model
+ant_null.model = lmer(f1_v1_t5 ~ 
+                       v1 + 
+                       (1+f1_v2_t5||speaker) + (1+f1_v2_t5||word), 
+                     data = df_nhar.CS, REML = FALSE)
+summary(ant_null.model)
+
+#summary(rePCA(ant_null.model))
+
+
+# comparing full and null models
+anova(ant_vh.model, ant_null.model)
+
+```
+There is no significant difference: anticipatory coarticulation is not robust in non-harmonic sequences.
+
+
+### Carryover model (effect of v1 on v2)
 
 ```{r}
 
 # full model
-v2_vh.model = lmer(f1_v2_t5 ~ 
+car_vh.model = lmer(f1_v2_t5 ~ 
                      v2 + f1_v1_t5 + 
                      (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                   data = df_nhar, REML = FALSE)
-summary(v2_vh.model)
+                   data = df_nhar.CS, REML = FALSE)
+summary(car_vh.model)
 
 # null model
-v2_null.model = lmer(f1_v2_t5 ~
+car_null.model = lmer(f1_v2_t5 ~
                        v2 +
                        (1+f1_v1_t5|speaker) + (1+f1_v1_t5|word), 
-                     data = df_nhar, REML = FALSE)
-summary(v2_null.model)
+                     data = df_nhar.CS, REML = FALSE)
+summary(car_null.model)
 
 
-anova(v2_vh.model, v2_null.model)
+anova(car_vh.model, car_null.model)
+
+
+```
+Again, model fit is singular, and the VCV matrix shows a correlation of +/-1 for both subject and item random effects. Running a PCA on the VCV matrix:
+
+```{r}
+
+summary(rePCA(car_vh.model))
+
+```
+This shows that for both speaker and item, the irst principal component accounts for 100% of the variance.So we need a model with reduced dimensionality. Removing the correlation parameters:
+
+```{r}
+
+# full model
+car_vh.model = lmer(f1_v2_t5 ~ 
+                     v2 + f1_v1_t5 + 
+                     (1+f1_v1_t5||speaker) + (1+f1_v1_t5||word), 
+                   data = df_nhar.CS, REML = FALSE)
+summary(car_vh.model)
+
+
+```
+The fit is still singular. But the VCV matrix now shows that two of the variance components (by-subject and by-item random slopes for f1_v1_t5) are zero. Removing these (intercept-only model):
+
+```{r}
+
+# full model
+car_vh.model = lmer(f1_v2_t5 ~ 
+                     v2 + f1_v1_t5 + 
+                     (1|speaker) + (1|word), 
+                   data = df_nhar.CS, REML = FALSE)
+summary(car_vh.model)
+
+summary(rePCA(car_vh.model))
+
+```
+
+This converges without warnings. Fitting the corresponding null model:
+
+```{r}
+
+# null model
+car_null.model = lmer(f1_v2_t5 ~ 
+                     v2 + 
+                     (1|speaker) + (1|word), 
+                   data = df_nhar.CS, REML = FALSE)
+summary(car_null.model)
 
 
 ```
 
+Comparing models:
 
+```{r}
+
+anova(car_vh.model,car_null.model)
+
+```
+No significant difference; carryover coarticulation is not robust in non-harmonic sequences.
 
 ### subset: harmonic
 
