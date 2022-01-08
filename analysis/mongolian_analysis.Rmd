@@ -98,9 +98,9 @@ V1:
 with(df_nhar, plotVowels(f1_v1_t5, f2_v1_t5, 
                          xlim=xlim, ylim=ylim,
                          vowel = v1, #group = speaker, 
-                         plot.tokens = FALSE, plot.means = TRUE, 
+                         plot.tokens = F, plot.means = T, 
                          var.col.by = v1, var.sty.by = v1, pch.means = v1, 
-                         ellipse.fill = F, 
+                         ellipse.fill = T, ellipse.line = F,
                          pretty = T))
 
 ```
@@ -113,7 +113,7 @@ with(df_nhar, plotVowels(f1_v2_t5, f2_v2_t5,
                          vowel = v2, #group = speaker, 
                          plot.tokens = FALSE, plot.means = TRUE, 
                          var.col.by = v2, var.sty.by = v2, pch.means = v2, 
-                         ellipse.fill = F, 
+                         ellipse.fill = T, ellipse.line = F,
                          pretty = T))
 
 ```
@@ -128,7 +128,7 @@ with(df_har, plotVowels(f1_v1_t5, f2_v1_t5,
                         vowel = v1, #group = speaker,
                         plot.tokens = FALSE, plot.means = TRUE, 
                         var.col.by = v1, var.sty.by = v1, pch.means = v1, 
-                        ellipse.fill = F, 
+                        ellipse.fill = T, 
                         poly.line = TRUE, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
                         pretty = T))
 ```
@@ -141,7 +141,7 @@ with(df_har, plotVowels(f1_v2_t5, f2_v2_t5,
                         vowel = v2, #group = speaker,
                         plot.tokens = F, plot.means = T, 
                         var.col.by = v2, var.sty.by = v2, pch.means = v2, 
-                        ellipse.fill = F, 
+                        ellipse.fill = T, 
                         poly.line = TRUE, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
                         pretty = T))
 ```
@@ -166,7 +166,7 @@ rm(df,df_har,df_nhar,df_rounding,df_ATR)
 
 Simplest model: F1 is predicted by the vowel identity. By-speaker and by-item intercepts.
 
-```{r}
+```{r,include=FALSE}
 
 null.model = lmer(f1_v1_t5 ~ 
                   v1 +
@@ -176,7 +176,7 @@ null.model = lmer(f1_v1_t5 ~
 
 We want to test the hypothesis that F1 is also predicted by F1 the other vowel (f1_v2). So modifying the random effects structure to add by-subject and by-item random slopes for the explanatory variable (expecting that each speaker and item differs in how f1_v2 affects f1_v1, i.e. in the extent of coarticulation):
 
-```{r}
+```{r,include=FALSE}
 
 full.model = lmer(f1_v1_t5 ~ 
                   v1 +
@@ -741,6 +741,8 @@ anova(car_vh.model, car_null.model)
 ```
 
 Adding harmony type as an interaction term does not improve model fit; extent of carryover coarticulation in F2 does not differ across harmonic vs non-harmonic sequences.
+
+
 ---
 
 ## Subsetting data by harmony type
@@ -804,11 +806,12 @@ summary(rePCA(ant_vh.model))
 This fits without errors. Note that the variance explained by the by-word random slopes is close to 0. Fitting the corresponding null model:
 
 ```{r}
+
 ant_null.model = lmer(f2_v1_t5 ~ 
                      v1+  
                      (1|speaker) + (1+f2_v2_t5|word), 
                    data = df_nhar.CS, REML = FALSE)
-summary(null_vh.model)
+summary(ant_null.model)
 
 anova(ant_vh.model,ant_null.model)
 ```
@@ -920,7 +923,7 @@ if(ant_greater == TRUE) {
 Effect size of anticipatory coarticulation is greater than carryover coarticulation in non-harmonic sequences.
 
 ---------------------------
-(harmonic subset: same pattern as overall. Code needs to be modified.)
+
 
 ### subset: harmonic
 
