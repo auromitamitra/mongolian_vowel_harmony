@@ -67,6 +67,6 @@ o can be followed by anything (anything non-pharyngeal, i.e. /e/), but O cannot 
 
 i --> transparent for rounding harmony
 
-if there is an u or U, any *open* vowels following them must be *non-round* (parallel to how any vowel folling /i/ must be non-pharyngeal)
+if there is an u or U, any *open* vowels following them must be *non-round* (parallel to how any vowel following /i/ must be non-pharyngeal)
 
 

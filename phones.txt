@@ -29,3 +29,8 @@ pʰ
 œ
 tʰ
 w
+
+
+vowels <- "a|aː|e|eː|i|o|o:|ɔ|ɔː|u|uː|ʊ|ʊː|iː"  
+longvowels <- "aː|eː|o:|oː|ɔː|uː|iː|ʊː"
+shortvowels <- "a|e|i|o|ɔ|u|ʊ"

@@ -1,0 +1,53 @@
+SUBMISSION: 219
+TITLE: Asymmetries in V-to-V coarticulation among harmonic and non-harmonic sequences in Khalkha Mongolian
+
+
+----------------------- REVIEW 1 ---------------------
+SUBMISSION: 219
+TITLE: Asymmetries in V-to-V coarticulation among harmonic and non-harmonic sequences in Khalkha Mongolian
+AUTHORS: Auromita Mitra and Indranil Dutta
+
+----------- Overall evaluation -----------
+SCORE: -1 (weak reject)
+----- TEXT:
+This is a study of vowel to vowel coarticulation in the presence of two vowel harmonies. There are lots of speakers and tokens, and training of a forced aligner. However, F3 was not measured, even though one of the harmonies is of rounding.
+
+For F1 and F2, the results are that coarticulation occurs in both directions, but carryover is stronger for harmonic sequences, while non-harmonic sequences show only anticipatory. That is, harmonic sequences enhance/preserve V1, while non-harmonic sequences enhance V2.
+
+There is no analysis of this result ("contrast preservation" is not an analysis).
+
+
+
+----------------------- REVIEW 2 ---------------------
+SUBMISSION: 219
+TITLE: Asymmetries in V-to-V coarticulation among harmonic and non-harmonic sequences in Khalkha Mongolian
+AUTHORS: Auromita Mitra and Indranil Dutta
+
+----------- Overall evaluation -----------
+SCORE: 2 (accept)
+----- TEXT:
+Summary: The authors find that Khalkha Mongolian disharmonic sequences show anticipatory coarticulation (opposite from the carryover coarticulation observed for harmonic sequences). It is incidentally claimed that vowels in harmonic sequences show more variability ("diffusion") than those in disharmonic sequences (?).
+
+Comments: This is a very interesting abstract (which I am marking to accept) with some easily fixable flaws. The biggest flaws are omissions- the phonological structures involved are left very unclear, and the implications are left rather unclear even though they are quite interesting.
+
+1) What are the disharmonic sequences disharmonic *in* (ATR, rounding, or both? or does it vary)?
+
+1b) We don't get an inventory of vowels which occur in the stimuli.
+
+2) What yields the disharmonic sequences (compounding? loans? something else), and can there be said to be two parts of the word which belong to the two harmony sets?
+
+3) The figure indicating the typical formant shift for the harmonized and un-harmonized sets is tantalizing but not actually very informative - first, because there are no untransformed data presented anywhere in the abstract, and secondly because it's not clear which vowels are involved (all are pooled to boot). It's interesting to see that in V1-V2 disharmonic sequences F2 and F1 both go up, but it's not clear at all what that is a consequence of, so it makes the associated claim hard to assess.
+
+A minor note, but in the model term "harmony type*F1V2t50" it is not totally clear why F1V2t50 (I assume "F1 at midpoint of second vowel" hasn't been introduced as a fixed effect. (This is also an undefined abbreviation that should be spelled out.)
+
+
+
+----------------------- REVIEW 3 ---------------------
+SUBMISSION: 219
+TITLE: Asymmetries in V-to-V coarticulation among harmonic and non-harmonic sequences in Khalkha Mongolian
+AUTHORS: Auromita Mitra and Indranil Dutta
+
+----------- Overall evaluation -----------
+SCORE: 3 (strong accept)
+----- TEXT:
+The abstract is thoughtfully presented. The methods and analyses are detailed and clear. The findings are interesting, showing that coarticulation varies for harmonic and non-harmonic sequences in Khalkha Mongolian and serves to preserve vowel contrasts in non-harmonic sequences.

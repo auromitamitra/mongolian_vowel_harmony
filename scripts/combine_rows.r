@@ -57,7 +57,17 @@ new_df <- df_odd %>%
   left_join(df_harmony, by = "word") %>%
   relocate(harmony_type, .after = word)
 
-  
+### 26.01.22: code for creating "consonant" column (intervening consonant). This is done in the analysis.rmd file now:
+df <- df %>% 
+  mutate(temp = word, .after = v2) %>%
+  #find the vowels in the word, replace with underscores
+  mutate(temp = str_replace_all(temp, v1, "_")) %>%
+  mutate(temp = str_replace_all(temp, v2, "_")) %>%
+  #create column with whatever is between the underscores (intervening consonant)
+  separate(temp, into = c(NA,"consonant",NA), sep = "_") %>%
+  mutate_if(is.character,as.factor)
+
+###
 
 # write into csv file
 write.csv(new_df,file = "formant_data/formants_temp.csv")
