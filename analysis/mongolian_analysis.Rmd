@@ -345,7 +345,7 @@ if(ant_greater == TRUE) {
 }
 
 ```
-?? The effect is larger in the left-to-right direction, same as the direction of vowel harmony.
+--> ?? The effect is larger in the left-to-right direction, same as the direction of vowel harmony.
 
 
 
@@ -417,9 +417,11 @@ summary(car_null.model)
 anova(car_vh.model, car_null.model)
 
 ```
-The harmony type*F1_v1 interaction has a significant effect in the full model, and improves model fit. That is, carryover coarticulation is moderated by harmony type.
+The harmony type*F1_v1 interaction has a significant effect in the full model, and improves model fit. That is, carryover coarticulation is moderated by harmony type. 
 
-Overall, extent and patterns of coarticlation are different across harmonic vs. non-harmonic sequences. The next section compares coarticulation in harmonic vs. non-harmonic words.
+--> however, adding the interaction term does not significantly improve model fit 
+
+Overall, extent and patterns of coarticulation are different across harmonic vs. non-harmonic sequences. The next section compares coarticulation in harmonic vs. non-harmonic words.
 
 ---
 
@@ -433,6 +435,8 @@ Overall, extent and patterns of coarticlation are different across harmonic vs. 
 ```{r}
 
 # full model
+
+#---> by-word random intercept gives singular fit; rePCA shows that there is by-speaker variation here
 ant_vh.model = lmer(f1_v1_t5 ~ 
                      v1+ v2 +
                      (1|speaker), 
@@ -441,26 +445,6 @@ summary(rePCA(ant_vh.model))
 summary(ant_vh.model)
 
 ```
-
-Model fit is singular for both the full and null models. Since the subsetted dataframe is small, it is possible that the model is too complex. The random effect correlation for word is 1, which suggests an overparameterized model (Bates et al. 2015). In the following steps, we simplify the random effects structure till the model converges. Running a PCA on the random effects covariance matrix to diagnose which parameters might be causing overfitting:
-
-```{r}
-
-summary(rePCA(ant_vh.model))
-
-```
-This shows that both for speaker and word, one principal component is enough to explain nearly 100% of the variance in the data. So we need a simpler model with reduced dimensionality. Following Bates (2015), we start by removing the correlation parameters for the random effects (zero-correlation-parameters model):
-
-```{r}
-ant_vh.model = lmer(f1_v1_t5 ~ 
-                     v1+ f1_v2_t5 + 
-                     (1+f1_v2_t5||speaker) + (1+f1_v2_t5||word), # || syntax: force correlation parameters to 0
-                   data = df_nhar.CS, REML = FALSE)
-summary(ant_vh.model)
-
-summary(rePCA(ant_vh.model))
-```
-This converges without problems, and the PCA shows a VCV (variance-covariance) matrix with full rank. (However, note that the proportion of variance explained by the random slope for both subject and item is small-- close to 0). Fitting the corresponding null model:
 
 ```{r}
 
@@ -478,7 +462,7 @@ summary(ant_null.model)
 anova(ant_vh.model, ant_null.model)
 
 ```
-There is no significant difference: anticipatory coarticulation is not robust in non-harmonic sequences.
+Anticipatory coarticulation is robust in non-harmonic sequences.
 
 
 ### Carryover model (effect of v1 on v2)
@@ -499,61 +483,6 @@ car_null.model = lmer(f1_v2_t5 ~
                        (1|speaker), 
                      data = df_nhar.CS, REML = FALSE)
 summary(car_null.model)
-
-
-```
-Again, model fit is singular, and the VCV matrix shows a correlation of +/-1 for both subject and item random effects. Running a PCA on the VCV matrix:
-
-```{r}
-
-summary(rePCA(car_vh.model))
-
-```
-This shows that for both speaker and item, the first principal component accounts for 100% of the variance.So we need a model with reduced dimensionality. Removing the correlation parameters:
-
-```{r}
-
-# full model
-car_vh.model = lmer(f1_v2_t5 ~ 
-                     v2 + f1_v1_t5 + 
-                     (1+f1_v1_t5||speaker) + (1+f1_v1_t5||word), 
-                   data = df_nhar.CS, REML = FALSE)
-summary(car_vh.model)
-
-
-```
-The fit is still singular. But the VCV matrix now shows that two of the variance components (by-subject and by-item random slopes for f1_v1_t5) are zero. Removing these (intercept-only model):
-
-```{r}
-
-# full model
-car_vh.model = lmer(f1_v2_t5 ~ 
-                     v2 + f1_v1_t5 + 
-                     (1|speaker) + (1|word), 
-                   data = df_nhar.CS, REML = FALSE)
-summary(car_vh.model)
-
-summary(rePCA(car_vh.model))
-
-```
-
-This converges without warnings. Fitting the corresponding null model:
-
-```{r}
-
-# null model
-car_null.model = lmer(f1_v2_t5 ~ 
-                     v2 + 
-                     (1|speaker) + (1|word), 
-                   data = df_nhar.CS, REML = FALSE)
-summary(car_null.model)
-
-
-```
-
-Comparing models:
-
-```{r}
 
 anova(car_vh.model,car_null.model)
 
@@ -601,6 +530,8 @@ if(ant_greater == TRUE) {
 ```
 In non-harmonic sequences, the effect size of anticipatory coarticulation (opposite todirection of vowel harmony) is greater than the carryover coarticulation.
 
+--> difference between anticipatory and carryover is greater in non-harmonic sequences? - check
+
 
 ### subset: harmonic
 
@@ -610,14 +541,14 @@ In non-harmonic sequences, the effect size of anticipatory coarticulation (oppos
 
 # full model
 ant_vh.model = lmer(f1_v1_t5 ~ 
-                     v1+ v2 + f1_v2_t5 +
+                     v1+ v2 +
                      (1|word), 
                    data = df_har.CS, REML = FALSE)
 summary(ant_vh.model)
 
 # null model
 ant_null.model = lmer(f1_v1_t5 ~ 
-                       v1 + v2 +
+                       v1 +
                        (1|word), 
                      data = df_har.CS, REML = FALSE)
 summary(ant_null.model)
@@ -1115,3 +1046,88 @@ Notes from earlier analysis:
 
 A PCA shows that for both word and speaker, one principle component explains nearly 100% of the variance in the data. The VCV matrix shows that the random intercept for speaker is 0. Since the data is lobanov normalized, this makes sense-- we have no reason to expect that each speaker has a different baseline F1. So removing the random intercept for speaker. 
 Since coarticulation is happening at the level of prodction, we have no reason to expect that word identity (beyond the identity of the consonant/vowel) should affect the extent of coarticulation So removing the random by-word slopes. 
+
+Models for subsets:
+===
+
+Non-harmonic subset:
+
+1) anticipatory model
+
+Model fit is singular for both the full and null models. Since the subsetted dataframe is small, it is possible that the model is too complex. The random effect correlation for word is 1, which suggests an overparameterized model (Bates et al. 2015). In the following steps, we simplify the random effects structure till the model converges. Running a PCA on the random effects covariance matrix to diagnose which parameters might be causing overfitting:
+
+```{r}
+
+summary(rePCA(ant_vh.model))
+
+```
+This shows that both for speaker and word, one principal component is enough to explain nearly 100% of the variance in the data. So we need a simpler model with reduced dimensionality. Following Bates (2015), we start by removing the correlation parameters for the random effects (zero-correlation-parameters model):
+
+```{r}
+ant_vh.model = lmer(f1_v1_t5 ~ 
+                     v1+ f1_v2_t5 + 
+                     (1+f1_v2_t5||speaker) + (1+f1_v2_t5||word), # || syntax: force correlation parameters to 0
+                   data = df_nhar.CS, REML = FALSE)
+summary(ant_vh.model)
+
+summary(rePCA(ant_vh.model))
+```
+This converges without problems, and the PCA shows a VCV (variance-covariance) matrix with full rank. (However, note that the proportion of variance explained by the random slope for both subject and item is small-- close to 0). Fitting the corresponding null model:
+
+
+
+2) Carryover model
+Again, model fit is singular, and the VCV matrix shows a correlation of +/-1 for both subject and item random effects. Running a PCA on the VCV matrix:
+
+```{r}
+
+summary(rePCA(car_vh.model))
+
+```
+This shows that for both speaker and item, the first principal component accounts for 100% of the variance.So we need a model with reduced dimensionality. Removing the correlation parameters:
+
+```{r}
+
+# full model
+car_vh.model = lmer(f1_v2_t5 ~ 
+                     v2 + f1_v1_t5 + 
+                     (1+f1_v1_t5||speaker) + (1+f1_v1_t5||word), 
+                   data = df_nhar.CS, REML = FALSE)
+summary(car_vh.model)
+
+
+```
+The fit is still singular. But the VCV matrix now shows that two of the variance components (by-subject and by-item random slopes for f1_v1_t5) are zero. Removing these (intercept-only model):
+
+```{r}
+
+# full model
+car_vh.model = lmer(f1_v2_t5 ~ 
+                     v2 + f1_v1_t5 + 
+                     (1|speaker) + (1|word), 
+                   data = df_nhar.CS, REML = FALSE)
+summary(car_vh.model)
+
+summary(rePCA(car_vh.model))
+
+```
+
+This converges without warnings. Fitting the corresponding null model:
+
+```{r}
+
+# null model
+car_null.model = lmer(f1_v2_t5 ~ 
+                     v2 + 
+                     (1|speaker) + (1|word), 
+                   data = df_nhar.CS, REML = FALSE)
+summary(car_null.model)
+
+
+```
+
+Comparing models:
+
+
+
+
