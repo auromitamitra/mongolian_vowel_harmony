@@ -14,7 +14,7 @@ df <- df %>% mutate_if(is.character,as.factor)
 str(df)
 
 # read in spreadsheet for harmony types
-df_harmony <- read_excel("harmony_type.xlsx")
+df_harmony <- read_excel("formant_data/harmony_type.xlsx")
 str(df_harmony)
 # change character variables to factors
 df_harmony <- df_harmony %>% mutate_if(is.character,as.factor)
@@ -58,7 +58,7 @@ new_df <- df_odd %>%
   relocate(harmony_type, .after = word)
 
 ### 26.01.22: code for creating "consonant" column (intervening consonant). This is done in the analysis.rmd file now:
-df <- df %>% 
+new_df <- new_df %>% 
   mutate(temp = word, .after = v2) %>%
   #find the vowels in the word, replace with underscores
   mutate(temp = str_replace_all(temp, v1, "_")) %>%
@@ -73,7 +73,7 @@ df <- df %>%
 write.csv(new_df,file = "formant_data/formants_temp.csv")
 
 ## Note: this messes up the IPA characters in excel 
-## Open new excel sheet "formants_new.csv" --> data --> import --> from text --> (select file + encoding) --> save
+## Open new excel sheet "formants_new.xlsl" --> data --> import --> from text --> (select file + encoding) --> save
 
 
 

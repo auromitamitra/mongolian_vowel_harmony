@@ -19,7 +19,7 @@ Load packages and data, create dataframes from Lobanov normalized formant values
 
 (note: file paths relative to the Rproject root folder (mongolian_vowel_harmony))
 
-```{r}
+```{r, results='hide'}
 
 library(here) # sets working directory to project root folder (default for .rmd files: folder that contains the file)
 library(readxl)
@@ -30,11 +30,13 @@ library(effectsize)  # to get approximations of effect size from test statistics
 library(lmerTest) # to get t and F values from lme model
 
 # read in data
-df <- read_excel("formant_data/formants_combined.xlsx") 
+df <- read_excel("formant_data/formants_new.xlsx") 
 str(df)
 
 # create "consonant" column (intervening consonant)
 df <- df %>% 
+  #remove distractor word
+  filter(word != "xɔjor") %>%
   mutate(temp = word, .after = v2) %>%
   #find the vowels in the word, replace with underscores
   mutate(temp = str_replace_all(temp, v1, "_")) %>%
@@ -42,7 +44,7 @@ df <- df %>%
   #create column with whatever is between the underscores (intervening consonant)
   separate(temp, into = c(NA,"consonant",NA), sep = "_") %>%
   mutate_if(is.character,as.factor) %>%
-  mutate(iteration = as.factor(iteration))
+  mutate(iteration = as.factor(iteration)) 
 
 str(df)
 
@@ -78,7 +80,7 @@ df_rounding <- filter(df_lobanov, harmony_type == "rounding")
 ## plots
 
 xlim=c(2.5,-2.5)
-ylim=c(4,-2)
+ylim=c(3,-2)
 
 ```
 
@@ -142,6 +144,35 @@ with(df_nhar, plotVowels(f1_v2_t5, f2_v2_t5,
                          pretty = T))
 
 ```
+For labphon18 poster:
+
+```{r}
+
+par(mfrow = c(1, 2))
+
+with(df_nhar, plotVowels(f1_v1_t5, f2_v1_t5, 
+                         xlim=xlim, ylim=ylim,
+                         vowel = v1, #group = speaker, 
+                         plot.tokens = F, plot.means = T, 
+                         var.col.by = v1, var.sty.by = NULL, pch.means = v1, 
+                         ellipse.fill = T, ellipse.line = F,
+                         poly.line = T, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
+                         pretty = T))
+
+
+with(df_nhar, plotVowels(f1_v2_t5, f2_v2_t5, 
+                         xlim=xlim, ylim=ylim,
+                         vowel = v2, #group = speaker, 
+                         plot.tokens = F, plot.means = T, 
+                         var.col.by = v2, var.sty.by = NULL, pch.means = v2, 
+                         ellipse.fill = T, ellipse.line = F,
+                         poly.line = T, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
+                         pretty = T))
+
+
+```
+
+
 
 ```{r}
 
@@ -150,10 +181,10 @@ with(df_nhar, plotVowels(f1_v2_t5, f2_v2_t5,
 
 with(df_nhar, plotVowels(f1_v1_t5, f2_v1_t5, 
                          xlim=xlim, ylim=ylim,
-                         vowel = NULL, #group = speaker, 
+                         vowel = v1, #group = speaker, 
                          plot.tokens = F, plot.means = T, 
-                         var.col.by = NULL, var.sty.by = NULL, pch.means = "V1",cex.means = 1.5, 
-                         ellipse.fill = T, fill.opacity = 0.3, col = "#FF6633", ellipse.line = F,
+                         var.col.by = NULL, var.sty.by = NULL, pch.means = v1,cex.means = 1.5, 
+                         ellipse.fill = T, fill.opacity = 0.25, col = "palevioletred3", ellipse.line = F,
                          poly.line = T, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
                          pretty = T))
 
@@ -161,13 +192,15 @@ par(new=TRUE)
 
 with(df_nhar, plotVowels(f1_v2_t5, f2_v2_t5, 
                          xlim=xlim, ylim=ylim,
-                         vowel = NULL, #group = NULL, 
+                         vowel = v2, #group = NULL, 
                          plot.tokens = F, plot.means = T, 
-                         var.col.by = v2, var.sty.by = NULL, pch.means = "V2", cex.means = 1.5,
-                         ellipse.fill = T, fill.opacity = 0.6, col = "grey", ellipse.line = F,
+                         var.col.by = v2, var.sty.by = NULL, pch.means = v2, cex.means = 1.5,
+                         ellipse.fill = T, fill.opacity = 0.3, col = "cornflowerblue", ellipse.line = F,
                          poly.line = T, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
                          pretty = T))
+par(xpd=TRUE)
 
+legend("bottomright", legend=c("v1","v2"), col = c("palevioletred3", "cornflowerblue"), fill = c("palevioletred3", "cornflowerblue"), border="white", bty="n")
 
 ```
 
@@ -199,6 +232,78 @@ with(df_har, plotVowels(f1_v2_t5, f2_v2_t5,
                         pretty = T))
 ```
 
+figure for labphon18 poster:
+
+```{r}
+par(mfrow = c(1,2))
+
+with(df_har, plotVowels(f1_v1_t5, f2_v1_t5, 
+                        xlim=xlim, ylim=ylim,
+                        vowel = v1, #group = speaker,
+                        plot.tokens = FALSE, plot.means = TRUE, 
+                        var.col.by = v1, var.sty.by = v1, pch.means = v1, 
+                        ellipse.fill = T, ellipse.line = F, 
+                        poly.line = TRUE, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
+                        pretty = T))
+
+with(df_har, plotVowels(f1_v2_t5, f2_v2_t5, 
+                        xlim=xlim, ylim=ylim,
+                        vowel = v2, #group = speaker,
+                        plot.tokens = F, plot.means = T, 
+                        var.col.by = v2, var.sty.by = v2, pch.means = v2, 
+                        ellipse.fill = T, ellipse.line = F,
+                        poly.line = TRUE, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
+                        pretty = T))
+
+```
+
+Combined figure for labphon18 poster:
+
+```{r}
+
+par(mfrow = c(2, 2))
+
+with(df_har, plotVowels(f1_v1_t5, f2_v1_t5, 
+                        xlim=xlim, ylim=ylim,
+                        vowel = v1, #group = speaker,
+                        plot.tokens = FALSE, plot.means = TRUE, 
+                        var.col.by = v1, var.sty.by = v1, pch.means = v1, 
+                        ellipse.fill = T, ellipse.line = F, 
+                        poly.line = TRUE, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
+                        pretty = T))
+
+with(df_har, plotVowels(f1_v2_t5, f2_v2_t5, 
+                        xlim=xlim, ylim=ylim,
+                        vowel = v2, #group = speaker,
+                        plot.tokens = F, plot.means = T, 
+                        var.col.by = v2, var.sty.by = v2, pch.means = v2, 
+                        ellipse.fill = T, ellipse.line = F,
+                        poly.line = TRUE, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
+                        pretty = T))
+
+
+with(df_nhar, plotVowels(f1_v1_t5, f2_v1_t5, 
+                         xlim=xlim, ylim=ylim,
+                         vowel = v1, #group = speaker, 
+                         plot.tokens = F, plot.means = T, 
+                         var.col.by = v1, var.sty.by = NULL, pch.means = v1, 
+                         ellipse.fill = T, ellipse.line = F,
+                         poly.line = T, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
+                         pretty = T))
+
+
+with(df_nhar, plotVowels(f1_v2_t5, f2_v2_t5, 
+                         xlim=xlim, ylim=ylim,
+                         vowel = v2, #group = speaker, 
+                         plot.tokens = F, plot.means = T, 
+                         var.col.by = v2, var.sty.by = NULL, pch.means = v2, 
+                         ellipse.fill = T, ellipse.line = F,
+                         poly.line = T, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
+                         pretty = T))
+
+#plot_grid(har_v1, har_v2, nh_v1, nh_v2, ncol=2)
+
+```
 
 ```{r}
 
@@ -206,10 +311,10 @@ with(df_har, plotVowels(f1_v2_t5, f2_v2_t5,
 
 with(df_har, plotVowels(f1_v1_t5, f2_v1_t5, 
                          xlim=xlim, ylim=ylim,
-                         vowel = NULL, #group = speaker, 
+                         vowel = v1, #group = speaker, 
                          plot.tokens = F, plot.means = T, 
-                         var.col.by = NULL, var.sty.by = NULL, pch.means = "V1",cex.means = 1.5, 
-                         ellipse.fill = T, fill.opacity = 0.25, col = "#FF6633", ellipse.line = F,
+                         var.col.by = NULL, var.sty.by = NULL, pch.means = v1,cex.means = 1.5, 
+                         ellipse.fill = T, fill.opacity = 0.35, col = "palevioletred3", ellipse.line = F,
                          poly.line = T, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
                          pretty = T))
 
@@ -217,12 +322,16 @@ par(new=TRUE)
 
 with(df_har, plotVowels(f1_v2_t5, f2_v2_t5, 
                          xlim=xlim, ylim=ylim,
-                         vowel = NULL, #group = NULL, 
+                         vowel = v2, #group = NULL, 
                          plot.tokens = F, plot.means = T, 
-                         var.col.by = v2, var.sty.by = NULL, pch.means = "V2", cex.means = 1.5,
-                         ellipse.fill = T, fill.opacity = 0.4, col = "grey", ellipse.line = F,
+                         var.col.by = NULL, var.sty.by = NULL, pch.means = v2, cex.means = 1.5,
+                         ellipse.fill = T, fill.opacity = 0.25, col = "cornflowerblue", ellipse.line = F,
                          poly.line = T, poly.order = c("i", "e", "a", "ɔ", "o", "ʊ", "u"),
                          pretty = T))
+par(xpd=TRUE)
+
+legend("bottomright", legend=c("v1","v2"), col = c("palevioletred3", "cornflowerblue"), fill = c("palevioletred3", "cornflowerblue"), border="white", bty="n")
+
 
 ```
 
@@ -265,9 +374,7 @@ ant_vh.model = lmer(f1_v1_t5 ~
 summary(rePCA(ant_vh.model))
 summary(ant_vh.model)
 
-```
 
-```{r}
 # null model
 ant_null.model = lmer(f1_v1_t5 ~ 
                        v1 + 
@@ -396,7 +503,7 @@ anova(ant_vh.model, ant_null.model)
 ```
 
 The harmony type*F1_v2 interaction has a significant effect in the full model, and improves model fit. That is, anticipatory coarticulation is moderated by harmony type.
-
+--> anticipatory coarticulation is not different
 
 ### Carryover model (effect of v1 on v2)
 
@@ -422,7 +529,7 @@ anova(car_vh.model, car_null.model)
 ```
 The harmony type*F1_v1 interaction has a significant effect in the full model. That is, carryover coarticulation is moderated by harmony type. 
 
---> however, adding the interaction term does not significantly improve model fit 
+--> adding the interaction term marginally improves model fit 
 
 Overall, extent and patterns of coarticulation are different across harmonic vs. non-harmonic sequences. The next section compares coarticulation in harmonic vs. non-harmonic words.
 
@@ -531,7 +638,6 @@ if(ant_greater == TRUE) {
 ```
 In non-harmonic sequences, the effect size of anticipatory coarticulation (opposite todirection of vowel harmony) is greater than the carryover coarticulation.
 
---> difference between anticipatory and carryover is greater in non-harmonic sequences? - check -- 0.169
 
 
 ### subset: harmonic
@@ -650,7 +756,7 @@ anova(ant_vh.model, ant_null.model)
 
 ```
 
-The full model is marginally better than the null model, showing coarticulation in the right-to-left (anticipatory) direction.
+The full model is better than the null model, showing coarticulation in the right-to-left (anticipatory) direction.
 
 ### Carryover model (effect of v1 on v2)
 ```{r}
@@ -713,7 +819,7 @@ if(ant_greater == TRUE) {
 }
 
 ```
-Effect size is greater in the left-to-right direction; same as that of vowel harmony.
+Effect size is greater in the anticipatory direction
 
 
 ## Interaction model:
@@ -744,7 +850,7 @@ anova(ant_vh.model, ant_null.model)
 ```
 
 Adding harmony type as an interaction term improves model fit; extent of anticipatory coarticulation in F2 differs across harmonic vs non-harmonic sequences.
-
+--> no difference
 
 ### Carryover model (effect of v1 on v2)
 
@@ -771,7 +877,7 @@ anova(car_vh.model, car_null.model)
 
 Adding harmony type as an interaction term does not improve model fit; extent of carryover coarticulation in F2 does not differ across harmonic vs non-harmonic sequences.
 
-Overall, there are differences in coarticulatory patterns between harmonic and non-harmonic sequences. To examine this difference, looking at coarticulation in harmonic and non-harmonic subsets:
+Overall, there are differences(?) in coarticulatory patterns between harmonic and non-harmonic sequences. To examine this difference, looking at coarticulation in harmonic and non-harmonic subsets:
 
 
 ## Subsetting data by harmony type
@@ -792,10 +898,10 @@ ant_vh.model = lmer(f2_v1_t5 ~
 summary(rePCA(ant_vh.model))
 summary(ant_vh.model)
 
-# null model
+# null model (not converging with (1|speaker) random effect structure. So full and null models are not nested; can't run an anova)
 ant_null.model = lmer(f2_v1_t5 ~ 
                        v1 + 
-                       (1|speaker) + (1|word), 
+                       (1|speaker) + (1|word) 
                      data = df_nhar.CS, REML = FALSE, control = lmerControl(optimizer = "bobyqa"))
 summary(ant_null.model)
 summary(rePCA(ant_null.model))
@@ -970,6 +1076,6 @@ Carryover coarticulation (same direction as vowel harmony) is greater than antic
 
 
 
-For F2, could not compare full vs null models for anticipatory coarticulation in non-harmonic sequences. Apart from that, patterns are identical to F1.
+For F2, could not compare full vs null models for anticipatory coarticulation in non-harmonic sequences. And the interaction model is not significantly better, for either anticipatory or carryover coarticulation. Apart from that, patterns are identical to F1.
 
 

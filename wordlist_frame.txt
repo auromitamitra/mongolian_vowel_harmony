@@ -139,12 +139,12 @@ Harmony type for target words (59):
 
 ʧ͡ʰiɮger	ATR
 ʦ͡ʊːraːr	ATR
-teɮijg	ATR
+teɮijg	ATR ---
 ʦ͡aːrʊːɮ	ATR
 teɮguːr	ATR
-xɔjor	non-harmonic
+xɔjor	non-harmonic ++++ distractor
 teɮger	ATR
-suɮijg	ATR
+suɮijg	ATR ---
 taɮiːg	non-harmonic
 teɮeːr	ATR
 taɮaːr	ATR
@@ -159,7 +159,7 @@ tuːguːr	ATR
 ʃiɮijg	ATR
 minij	ATR
 suɮteːr	ATR
-suːɮijg	ATR
+suːɮijg	ATR ---
 taɮʊːɮ	ATR
 ʃiɮeːr	ATR
 tɔːgʊːr	ATR
@@ -176,7 +176,7 @@ toɮo:r	ATR
 tuːɮger	ATR
 ʦ͡ʊrgʊːɮ	ATR
 tijɮeɮtʰ	ATR
-toɮijg	ATR
+toɮijg	ATR ---
 tɔɮʊːɮ	ATR
 torwuːɮ	ATR
 po:ro:r	ATR
@@ -186,7 +186,7 @@ paːɮiːg	non-harmonic
 tɔɮɔːr	rounding
 pijrijg	ATR
 tijɮuːɮ	ATR
-teːɮijg	ATR
+teːɮijg	ATR ---
 pijreːr	ATR
 paːɮaːr	ATR
 saːraɮ	ATR
@@ -194,5 +194,9 @@ suːɮeːr	ATR
 teːguːr	ATR
 pɔːɮiːg	non-harmonic
 pɔɮɔr	rounding
-porijg	ATR
+porijg	ATR ---
 ʦ͡o:ɮruːɮ	ATR
+
+[8.6.22] --- words: should be non-harmonic (non-initial i does not participate in VH). Corrected in analysis script now, correct data (csv) file later 
+
+porijg|teːɮijg|toɮijg|suːɮijg|teɮijg|suɮijg

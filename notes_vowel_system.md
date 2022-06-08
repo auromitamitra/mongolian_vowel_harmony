@@ -2,9 +2,9 @@
 &nbsp;
 
 - seven vowels i, e, a, o, O, u, ʊ. Classified as :
-    - pharyngeal/tense/ATR: i, e, u, o
-    - non-pharyngeal/lax: a, ʊ, O.
-- i -- no lax counterpart
+    - non-pharyngeal/ATR: e, u, o
+    - pharyngeal/non-ATR: a, ʊ, O.
+- i -- neutral (pronunciation differs in pharyngeal vs non-pharyngeal words)-- allophones-- transcribed as i (in non-pharyngeal words) or I (pharyngeal)
 
 Harmony:
 
@@ -63,7 +63,7 @@ In non-initial syllable: o and O can occur ONLY if the initial vowel is also rou
 
 But not the other way round: Not the case that if the first vowel is o or O, the following ones obligatorily have to be round. They can be anything. But not quite 'anything', there's a catch:
 
-o can be followed by anything (anything non-pharyngeal, i.e. /e/), but O cannot be followed /a/. So O can only be followed by O (among the open vowels; not concerned with high vowels here)
+o can be followed by anything (anything non-pharyngeal, i.e. /e/), but O cannot be followed by /a/. So O can only be followed by O (among the open vowels; not concerned with high vowels here)
 
 i --> transparent for rounding harmony
 
