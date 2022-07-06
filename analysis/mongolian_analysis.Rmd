@@ -502,8 +502,8 @@ anova(ant_vh.model, ant_null.model)
 
 ```
 
-The harmony type*F1_v2 interaction has a significant effect in the full model, and improves model fit. That is, anticipatory coarticulation is moderated by harmony type.
---> anticipatory coarticulation is not different
+
+--> anticipatory coarticulation is not different across subsets
 
 ### Carryover model (effect of v1 on v2)
 
@@ -527,7 +527,6 @@ summary(car_null.model)
 anova(car_vh.model, car_null.model)
 
 ```
-The harmony type*F1_v1 interaction has a significant effect in the full model. That is, carryover coarticulation is moderated by harmony type. 
 
 --> adding the interaction term marginally improves model fit 
 
@@ -595,7 +594,7 @@ summary(car_null.model)
 anova(car_vh.model,car_null.model)
 
 ```
-No significant difference; carryover coarticulation is not robust in non-harmonic sequences.
+Carryover coarticulation is robust in non-harmonic sequences.
 
 
 Comparing effect sizes in the anticipatory vs carryover models:
@@ -636,7 +635,7 @@ if(ant_greater == TRUE) {
 
 
 ```
-In non-harmonic sequences, the effect size of anticipatory coarticulation (opposite todirection of vowel harmony) is greater than the carryover coarticulation.
+In non-harmonic sequences, the effect size of anticipatory coarticulation (opposite to direction of vowel harmony) is greater than the carryover coarticulation.
 
 
 
@@ -901,7 +900,7 @@ summary(ant_vh.model)
 # null model (not converging with (1|speaker) random effect structure. So full and null models are not nested; can't run an anova)
 ant_null.model = lmer(f2_v1_t5 ~ 
                        v1 + 
-                       (1|speaker) + (1|word) 
+                       (1|speaker),
                      data = df_nhar.CS, REML = FALSE, control = lmerControl(optimizer = "bobyqa"))
 summary(ant_null.model)
 summary(rePCA(ant_null.model))
@@ -909,7 +908,7 @@ summary(rePCA(ant_null.model))
 anova(ant_vh.model, ant_null.model)
 
 ```
-V2 terms in the full model are significant, suggesting coarticulation in the anticipatory direction. However, we cannot compare this to the corresponding null model using an anova, because of convergence issues-- simplifying the random effects structure until models converge give different random effects structures for the full and null model.
+V2 terms in the full model are significant, suggesting coarticulation in the anticipatory direction. The full model is better than the null model. (however, note: null model has a singular fit).
 
 
 ### Carryover model (effect of v1 on v2)
@@ -962,6 +961,7 @@ dendf <- anova$`DenDF`[[2]] %>% signif(digits=3)
 
 # partial eta squared value for explanatory variable: F_to_eta2(Fvalue, NumDF, DenDF)
 car_effect <- F_to_eta2(F,df,dendf)$Eta2_partial %>% signif(digits=3) 
+
 
 rm(anova,F,df,dendf)
 
@@ -1076,6 +1076,6 @@ Carryover coarticulation (same direction as vowel harmony) is greater than antic
 
 
 
-For F2, could not compare full vs null models for anticipatory coarticulation in non-harmonic sequences. And the interaction model is not significantly better, for either anticipatory or carryover coarticulation. Apart from that, patterns are identical to F1.
+For F2, null model for anticipatory coarticulation in non-harmonic sequences has a singular fit. Apart from that, patterns are identical to F1.
 
 
