@@ -29,7 +29,7 @@
 - A subset of these vowels also show rounding harmony, but we are not looking at that here
 - The high front vowel, /i/ is `transparent' -- when it occurs in a non-initial position, it does not participate in VH
 - This results in what we define as non-harmonic VCV sequences
-- we are expecially interested in what happens within these non-harmonic sequences 
+- these are especially interesting, as we will talk about soon 
 
 ### Slide 6      
     - Given what we know about how VH systems develop, we are interested in two questions:
@@ -45,21 +45,23 @@
     - from what we saw before — non-initial i is transparent, so words where V2 is i are non-harmonic. These are the two groups we are comparing
 
 ### Slide 8
-    - To force-align and annotate the data, we manually annotated a subset, including both passage and wordlist, and trained an acoustic model using Kaldi. Then used MFA to annotate the rest
-    - [figure] this is the frame sentence, we measured the FFs of each vowel at the mid-point, 
+    - To force-align and annotate the data, we trained an acoustic model using Kaldi. Then used MFA to annotate the rest
+    - [figure] we presented target words in a frame sentence, we measured the FFs of each vowel at the mid-point, 
     ?? - and then to quantify coarticulation, we asked how well the FF of this vowel could be predicted by the identity of the other vowel in the word in a statistical model
         
 ### slide 9
         - plotting the F1XF2 vowel spaces for the initial and non-initial vowels in both groups, we see that
         - for harmonic sequences, the V2 space is clearly more diffused than V1, suggesting greater variability due to coarticulation
-        - comparing between the groups, V2 doesn't tell us much because vowels in the two groups have a complementary distribution. But when we compare V1 in the harmonic vs non-harmonic sets-- a and U in the initial position of nh words-- much more diffused than the corresponding vowels in harmonic words. Suggests that the coarticulatory patterns might differ
+        - comparing between the groups, V2 doesn't tell us much because vowels in the two groups have a complementary distribution. But when we compare V1 in the harmonic vs non-harmonic sets-- a and U aremuch more diffused when they appear in the initial position of nh words, compared to the corresponding vowels in harmonic words. Suggests that the coarticulatory patterns might differ
     
-### slide 10    
+### slide 10  
+        - we know that the FF of any segment would be predicted by the vowel identity
         - to quantify coarticulation, we used mixed effects models to ask how well the formant frequency of a vowel is predicted by the identity of the other vowel in the word
+        - fixed effects and model outputs are shown in the table
         - want to see if there are differences in this tendency between harmonic and non-harmonic subsets
         - to compare the extent of coarticulation, we calculated the effect size (eta squared) for the explanatory variable in each model
-        - fixed effects and model outputs are shown in the table
-        - F1: robust coarticulation in both directions, carryover coarticulation is greater for both har and nh sequences
+ 
+        - F1: robust coarticulation in both directions, carryover coarticulation is greater for both har and nh sequences, matching the direction of vh
 
 ### slide 11
         - however in F2, which is an acoustic correlate for the ATR feature, see that harmonic sequences only show carryover coarticulation
@@ -69,8 +71,8 @@
 ### slide 12
         to summarize:
         - patterns of coarticulation differ— in F2, features of V2 are enhanced in nh sequences
-        - high front vowel, which doesn't participate in vowel harmony, shows high coarticulatory resistance, giving some clue as to how these words might have developed as non-harmonic sequences diachronially  
-        - it’s interesting to note that coarticulation, which we generally understand to be inimical to contrast, could be possibly enhancing/preserving phonological contrast in a system where the general tendency is towards feature sharing and thus the loss of contrast
+        - high front vowel, which doesn't participate in vowel harmony, shows high coarticulatory resistance, giving some clue as to how these sequences might have developed as non-harmonic diachronially  
+        - it’s interesting to note that coarticulation, which we generally understand to be inimical to contrast, could be possibly enhancing/preserving phonological contrast in a system where the overall tendency is towards feature sharing and thus the loss of contrast
         - suggests that automatic physiological processes in speech aren’t independent of “abstract” grammatical knowledge, and vice-versa
         
 ### Slide 13 Future stuffw
