@@ -21,9 +21,56 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{ohala1994}
+J.~J. Ohala, ``Towards a universal, phonetically-based, theory of vowel
+  harmony,'' in \emph{Third International Conference on Spoken Language
+  Processing}, 1994.
+
+\bibitem{beddor2002}
+P.~S. Beddor, J.~D. Harnsberger, and S.~Lindemann, ``Language-specific patterns
+  of vowel-to-vowel coarticulation: Acoustic structures and their perceptual
+  correlates,'' \emph{Journal of Phonetics}, vol.~30, no.~4, pp. 591--627,
+  2002.
+
+\bibitem{dutta2016}
+\BIBentryALTinterwordspacing
+I.~Dutta, S.~Irfan, and K.~Harsha, ``Using {ANN}s for vowel identification from
+  {V}-to-{V} coarticulation in non-harmonic {VCV} sequences.''\hskip 1em plus
+  0.5em minus 0.4em\relax Presented at the 15th Conference on Laboratory
+  Phonology, Ithaca, NY, 2016. [Online]. Available:
+  \url{http://labphon.org/labphon15/long_abstracts/LabPhon15_Revised_abstract_279.pdf}
+\BIBentrySTDinterwordspacing
+
 \bibitem{svantesson2005}
 J.-O. Svantesson, A.~Tsendina, A.~Karlsson, and V.~Franz{\'e}n, \emph{The
   phonology of Mongolian}.\hskip 1em plus 0.5em minus 0.4em\relax OUP Oxford,
   2005.
+
+\bibitem{mcauliffe2017montreal}
+M.~McAuliffe, M.~Socolof, S.~Mihuc, M.~Wagner, and M.~Sonderegger, ``Montreal
+  forced aligner: Trainable text-speech alignment using kaldi.'' in
+  \emph{Interspeech}, vol. 2017, 2017, pp. 498--502.
+
+\bibitem{lme4}
+D.~Bates, M.~M{\"a}chler, B.~Bolker, and S.~Walker, ``Fitting linear
+  mixed-effects models using {lme4},'' \emph{Journal of Statistical Software},
+  vol.~67, no.~1, pp. 1--48, 2015.
+
+\bibitem{R-Core-Team:2015aa}
+\BIBentryALTinterwordspacing
+{R Core Team}, \emph{R: A Language and Environment for Statistical Computing},
+  R Foundation for Statistical Computing, Vienna, Austria, 2015. [Online].
+  Available: \url{https://www.R-project.org/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{effectsize}
+M.~S. Ben-Shachar, D.~L{\"u}decke, and D.~Makowski, ``effectsize: Estimation of
+  effect size indices and standardized parameters,'' \emph{Journal of Open
+  Source Software}, vol.~5, no.~56, p. 2815, 2020.
+
+\bibitem{bates2015}
+D.~Bates, M.~M{\"a}chler, B.~Bolker, and S.~Walker, ``Fitting linear
+  mixed-effects models using {lme4},'' \emph{Journal of Statistical Software},
+  vol.~67, no.~1, pp. 1--48, 2015.
 
 \end{thebibliography}

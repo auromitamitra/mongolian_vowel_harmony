@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.12.14)  2 JAN 2023 23:54
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.12.14)  19 JAN 2023 21:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -700,33 +700,8 @@ Package pdftexcmds Info: \pdfdraftmode not found.
 Package epstopdf Warning: Drivers other than `pdftex' and `luatex' are not supp
 orted.
 
-)) (c:/texlive/2018/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
-\c@subfigure=\count198
-\c@subtable=\count199
-)
-(c:/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2016/04/27 v1.618033 publication quality tables
-\heavyrulewidth=\dimen166
-\lightrulewidth=\dimen167
-\cmidrulewidth=\dimen168
-\belowrulesep=\dimen169
-\belowbottomsep=\dimen170
-\aboverulesep=\dimen171
-\abovetopsep=\dimen172
-\cmidrulesep=\dimen173
-\cmidrulekern=\dimen174
-\defaultaddspace=\dimen175
-\@cmidla=\count266
-\@cmidlb=\count267
-\@aboverulesep=\dimen176
-\@belowrulesep=\dimen177
-\@thisruleclass=\count268
-\@lastruleclass=\count269
-\@thisrulewidth=\dimen178
-)
-(c:/texlive/2018/texmf-dist/tex/latex/ccicons/ccicons.sty
-Package: ccicons 2017/10/30 v1.6 LaTeX support for Creative Commons icons
+)) (c:/texlive/2018/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2018/04/08 v1.1 Adjusting TeX boxes (trim, clip, ...)
 
 (c:/texlive/2018/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
@@ -736,9 +711,95 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 \XKV@toks=\toks25
 \XKV@tempa@toks=\toks26
 )
-\XKV@depth=\count270
+\XKV@depth=\count198
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)))
+))
+(c:/texlive/2018/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(c:/texlive/2018/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
+
+(c:/texlive/2018/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box50
+)
+\tc@llx=\dimen166
+\tc@lly=\dimen167
+\tc@urx=\dimen168
+\tc@ury=\dimen169
+Package trimclip Info: Using driver 'tc-xetex.def'.
+
+(c:/texlive/2018/texmf-dist/tex/latex/adjustbox/tc-xetex.def
+File: tc-xetex.def 2018/04/08 v2.1 Clipping driver for xetex
+))
+\adjbox@Width=\dimen170
+\adjbox@Height=\dimen171
+\adjbox@Depth=\dimen172
+\adjbox@Totalheight=\dimen173
+\adjbox@pwidth=\dimen174
+\adjbox@pheight=\dimen175
+\adjbox@pdepth=\dimen176
+\adjbox@ptotalheight=\dimen177
+
+(c:/texlive/2018/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count199
+)
+(c:/texlive/2018/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box51
+\sift@deathcycles=\count266
+\@vwid@loff=\dimen178
+\@vwid@roff=\dimen179
+))
+(c:/texlive/2018/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count267
+\float@exts=\toks27
+\float@box=\box52
+\@float@everytoks=\toks28
+\@floatcapt=\box53
+)
+(c:/texlive/2018/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
+(c:/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip60
+\multirow@cntb=\count268
+\multirow@dima=\skip61
+\bigstrutjot=\dimen180
+)
+(c:/texlive/2018/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+\c@subfigure=\count269
+\c@subtable=\count270
+)
+(c:/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2016/04/27 v1.618033 publication quality tables
+\heavyrulewidth=\dimen181
+\lightrulewidth=\dimen182
+\cmidrulewidth=\dimen183
+\belowrulesep=\dimen184
+\belowbottomsep=\dimen185
+\aboverulesep=\dimen186
+\abovetopsep=\dimen187
+\cmidrulesep=\dimen188
+\cmidrulekern=\dimen189
+\defaultaddspace=\dimen190
+\@cmidla=\count271
+\@cmidlb=\count272
+\@aboverulesep=\dimen191
+\@belowrulesep=\dimen192
+\@thisruleclass=\count273
+\@lastruleclass=\count274
+\@thisrulewidth=\dimen193
+)
+(c:/texlive/2018/texmf-dist/tex/latex/ccicons/ccicons.sty
+Package: ccicons 2017/10/30 v1.6 LaTeX support for Creative Commons icons
+)
 (c:/texlive/2018/texmf-dist/tex/latex/tipa/tipa.sty
 Package: tipa 2002/08/08 TIPA version 1.1
 
@@ -759,27 +820,27 @@ LaTeX Font Info:    Redeclaring font encoding TU on input line 82.
 (./icphs2023_mongolian_writeup.aux)
 \openout1 = `icphs2023_mongolian_writeup.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 27.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 29.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 29.
 
 (c:/texlive/2018/texmf-dist/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    ... okay on input line 29.
 .................................................
 . fontspec info: "setup-math"
 . 
@@ -787,192 +848,245 @@ LaTeX Font Info:    ... okay on input line 27.
 .................................................
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 27.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 27.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 27.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 27.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 27.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 27.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 27.
-LaTeX Font Info:    Redeclaring math accent \check on input line 27.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 27.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 27.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 27.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 27.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 29.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 29.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 29.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 29.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 29.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 29.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 29.
+LaTeX Font Info:    Redeclaring math accent \check on input line 29.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 29.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 29.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 29.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 29.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 29.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 27.
+(Font)              `operators' in the math version `normal' on input line 29.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> TU/TimesNewRoman(0)/m/n on input line 2
-7.
+9.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 27.
+(Font)              `operators' in the math version `bold' on input line 29.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/m/n on input line 
-27.
+29.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/m/n on 
-input line 27.
+input line 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> TU/TimesNewRoman(0)/m/it on input line
- 27.
+ 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/bx/n on input line
- 27.
+ 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 27.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 27.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 29.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/bx/n on
- input line 27.
+ input line 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> TU/TimesNewRoman(0)/bx/it on input li
-ne 27.
+ne 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 27.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 29.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 27.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 29.
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
-Underfull \hbox (badness 7047) in paragraph at lines 32--34
+Underfull \hbox (badness 7047) in paragraph at lines 34--36
 \TU/TimesNewRoman(0)/m/n/10.95 words share the features [ATR] and [round],
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--36
 \TU/TimesNewRoman(0)/m/n/10.95 harmony operating in the carryover (left-to-
  []
 
 
-Underfull \hbox (badness 1484) in paragraph at lines 32--34
+Underfull \hbox (badness 1484) in paragraph at lines 34--36
 \TU/TimesNewRoman(0)/m/n/10.95 right) direction. The high-front vowel /i/ does
  []
 
 
-Underfull \hbox (badness 1902) in paragraph at lines 32--34
+Underfull \hbox (badness 1902) in paragraph at lines 34--36
 \TU/TimesNewRoman(0)/m/n/10.95 understood to emerge (i) when listeners fail to
  []
 
 
-Underfull \hbox (badness 7704) in paragraph at lines 32--34
+Underfull \hbox (badness 7704) in paragraph at lines 34--36
 \TU/TimesNewRoman(0)/m/n/10.95 perceptually compensate for acoustic variation
  []
 
 
-Underfull \hbox (badness 7685) in paragraph at lines 32--34
+Underfull \hbox (badness 7685) in paragraph at lines 34--36
 \TU/TimesNewRoman(0)/m/n/10.95 due to coarticulation, and (ii) for perceptual
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--34
+Underfull \hbox (badness 10000) in paragraph at lines 34--36
 \TU/TimesNewRoman(0)/m/n/10.95 advantage in perceptually ”weak” contrasts.
  []
 
 
-Underfull \hbox (badness 2277) in paragraph at lines 32--34
+Underfull \hbox (badness 2277) in paragraph at lines 34--36
 \TU/TimesNewRoman(0)/m/n/10.95 Towards understanding the relationship between
  []
 
 
-Underfull \hbox (badness 2469) in paragraph at lines 32--34
+Underfull \hbox (badness 2469) in paragraph at lines 34--36
 \TU/TimesNewRoman(0)/m/n/10.95 sequences, non-harmonic sequences demonstrate
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 32--34
+Underfull \hbox (badness 3439) in paragraph at lines 34--36
 \TU/TimesNewRoman(0)/m/n/10.95 synchronic patterns of coarticulatory propensity
 
  []
 
 
-Underfull \hbox (badness 5105) in paragraph at lines 32--34
+Underfull \hbox (badness 5105) in paragraph at lines 34--36
 \TU/TimesNewRoman(0)/m/n/10.95 serve to limit feature-sharing in non-harmonic
  []
 
-LaTeX Font Info:    Try loading font information for T3+TimesNewRoman(0) on inp
-ut line 51.
-LaTeX Font Info:    No file T3TimesNewRoman(0).fd. on input line 51.
 
-LaTeX Font Warning: Font shape `T3/TimesNewRoman(0)/m/n' undefined
-(Font)              using `T3/cmr/m/n' instead on input line 51.
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 Vowel harmony is a grammatical feature of
+ []
 
 
-Underfull \hbox (badness 1163) in paragraph at lines 79--80
-\TU/TimesNewRoman(0)/m/n/10.95 repetitions of 59 target words, in the frame [pi
+Underfull \hbox (badness 1735) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 the word, obligatorily have the same value for
+ []
+
+
+Underfull \hbox (badness 1509) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 be left-to-right: \TU/TimesNewRoman(0)/m/it/10.9
+5 carryover\TU/TimesNewRoman(0)/m/n/10.95 , where features of a
+ []
+
+
+Underfull \hbox (badness 4108) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 preceding vowel affect those of the following
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 vowels, or right-to-left: \TU/TimesNewRoman(0)/m
+/it/10.95 anticipatory \TU/TimesNewRoman(0)/m/n/10.95 where the
+ []
+
+
+Underfull \hbox (badness 3679) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 gestures overlap during connected speech, and
+ []
+
+
+Underfull \hbox (badness 5771) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 this kind of \TU/TimesNewRoman(0)/m/it/10.95 coa
+rticulation \TU/TimesNewRoman(0)/m/n/10.95 results in acoustic
+ []
+
+
+Underfull \hbox (badness 1264) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 categories from such a variable signal, listener
+s
+ []
+
+
+Underfull \hbox (badness 4765) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 must perceptually compensate for the acoustic
+ []
+
+
+Underfull \hbox (badness 3758) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 variation resulting from coarticulation. Given
+ []
+
+
+Underfull \hbox (badness 2035) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 processes, vowel harmony has been understood
+ []
+
+
+Underfull \hbox (badness 2717) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 to diachronically emerge when listeners fail to
+ []
+
+
+Underfull \hbox (badness 5711) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 has developed. Assuming the hypothesis of
+ []
+
+
+Underfull \hbox (badness 2443) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 causation, once a psycho-acoustic process such
+ []
+
+
+Underfull \hbox (badness 1442) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 as the perceptual persistence of e.g. carryover
+ []
+
+
+Underfull \hbox (badness 1331) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 phonological vowel-copying exist (e.g. Telugu;
+ []
+
+
+Underfull \hbox (badness 1701) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 [[]]), other harmony systems appear to be in a
+ []
+
+
+Underfull \hbox (badness 1365) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 synchronic state of equilibrium, where harmony
+ []
+
+
+Underfull \hbox (badness 4660) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 the issue of which specific sequences emerge
+ []
+
+
+Underfull \hbox (badness 6461) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 as non-harmonic diachronically, how do such
+ []
+
+
+Underfull \hbox (badness 3128) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 sequences persist in synchronic systems, given
+ []
+
+
+Underfull \hbox (badness 2103) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 the continued existence of coarticulation in the
 
  []
 
 
-Underfull \hbox (badness 1484) in paragraph at lines 79--80
-\TU/TimesNewRoman(0)/m/n/10.95 X gesen] “I said X” (critical items: 59$\OMS/cms
-y/m/n/10.95 ^^B$\TU/TimesNewRoman(0)/m/n/10.95 14$\OMS/cmsy/m/n/10.95 ^^B$\TU/T
-imesNewRoman(0)/m/n/10.95 4
+Underfull \hbox (badness 2221) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 for its perceptual non-compensation? In other
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 79--80
-\TU/TimesNewRoman(0)/m/n/10.95 = 3304). Targets were disyllabic words of the
- []
-
-
-LaTeX Warning: Citation `mcauliffe2017montreal' on page 1 undefined on input li
-ne 82.
-
-
-Underfull \hbox (badness 4543) in paragraph at lines 82--83
-\TU/TimesNewRoman(0)/m/n/10.95 A subset of recordings was used to train an
- []
-
-
-Underfull \hbox (badness 1527) in paragraph at lines 82--83
-\TU/TimesNewRoman(0)/m/n/10.95 mixed effects models to examine how well the
- []
-
-File: images/har_v1.png Graphic file (type bmp)
-<images/har_v1.png>
-
-Overfull \hbox (8.6687pt too wide) in paragraph at lines 92--93
- [][] 
- []
-
-File: images/har_v2.png Graphic file (type bmp)
-<images/har_v2.png>
-
-Overfull \hbox (8.6687pt too wide) in paragraph at lines 97--98
- [][] 
- []
-
-File: images/nh_v1.png Graphic file (type bmp)
-<images/nh_v1.png>
-
-Overfull \hbox (8.6687pt too wide) in paragraph at lines 103--104
- [][] 
- []
-
-File: images/nh_v2.png Graphic file (type bmp)
-<images/nh_v2.png>
-
-Overfull \hbox (8.6687pt too wide) in paragraph at lines 108--109
- [][] 
- []
-
-
-Underfull \hbox (badness 1072) in paragraph at lines 117--118
-\TU/TimesNewRoman(0)/m/n/10.95 greater propensity in the carryover (left-to-rig
-ht)
+Underfull \hbox (badness 7308) in paragraph at lines 42--43
+\TU/TimesNewRoman(0)/m/n/10.95 that initiated harmony, into its grammatically
  []
 
 
@@ -983,95 +1097,339 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
+Underfull \hbox (badness 3668) in paragraph at lines 44--45
+\TU/TimesNewRoman(0)/m/n/10.95 in harmonic and non-harmonic sequences, and
+ []
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 120.
+LaTeX Font Info:    Try loading font information for T3+TimesNewRoman(0) on inp
+ut line 55.
+LaTeX Font Info:    No file T3TimesNewRoman(0).fd. on input line 55.
 
-\openout3 = `icphs2023_mongolian_writeup.ent'.
-
-! Undefined control sequence.
-<recently read> \multirow 
-                          
-l.131 ^^I}
-          
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \multirow 
-                          
-l.131 ^^I}
-          
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+LaTeX Font Warning: Font shape `T3/TimesNewRoman(0)/m/n' undefined
+(Font)              using `T3/cmr/m/n' instead on input line 55.
 
 
-Overfull \hbox (256.09912pt too wide) in paragraph at lines 122--132
-[][] 
+Underfull \hbox (badness 7907) in paragraph at lines 80--81
+\TU/TimesNewRoman(0)/m/n/10.95 We focus on ATR harmony, whose acoustic
  []
 
 
-Underfull \hbox (badness 1194) in paragraph at lines 138--139
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
+\TU/TimesNewRoman(0)/m/n/10.95 correlates are the first and second formant
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
+\TU/TimesNewRoman(0)/m/n/10.95 frequencies (F1 and F2), and operationalize
+ []
+
+
+Underfull \hbox (badness 1852) in paragraph at lines 82--83
+[]\TU/TimesNewRoman(0)/m/n/10.95 We ask whether the extent and directionality
+ []
+
+
+Underfull \hbox (badness 6032) in paragraph at lines 82--83
+\TU/TimesNewRoman(0)/m/n/10.95 of coarticulation differ between harmonic and
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 82--83
+\TU/TimesNewRoman(0)/m/n/10.95 non-harmonic VCV sequences. We expect that
+ []
+
+
+Underfull \hbox (badness 3291) in paragraph at lines 82--83
+\TU/TimesNewRoman(0)/m/n/10.95 certain domains, such sequences will differ in
+ []
+
+
+Underfull \hbox (badness 1681) in paragraph at lines 82--83
+\TU/TimesNewRoman(0)/m/n/10.95 coarticulatory patterns, compared to domains in
+ []
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 87--88
+\TU/TimesNewRoman(0)/m/n/10.95 repetitions of 59 target words, in the frame [pi
+
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 87--88
+\TU/TimesNewRoman(0)/m/n/10.95 X gesen] “I said X” (critical items: 59$\OMS/cms
+y/m/n/10.95 ^^B$\TU/TimesNewRoman(0)/m/n/10.95 14$\OMS/cmsy/m/n/10.95 ^^B$\TU/T
+imesNewRoman(0)/m/n/10.95 4
+ []
+
+
+Underfull \hbox (badness 1184) in paragraph at lines 87--88
+\TU/TimesNewRoman(0)/m/n/10.95 = 3304). Targets were disyllabic words of the
+ []
+
+
+Underfull \hbox (badness 4543) in paragraph at lines 90--91
+\TU/TimesNewRoman(0)/m/n/10.95 A subset of recordings was used to train an
+ []
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 90--91
+\TU/TimesNewRoman(0)/m/n/10.95 mixed effects models to examine how well the
+ []
+
+
+Underfull \hbox (badness 1072) in paragraph at lines 94--95
+\TU/TimesNewRoman(0)/m/n/10.95 the following patterns: for harmonic sequences,
+ []
+
+File: images/har_v1.png Graphic file (type bmp)
+<images/har_v1.png>
+
+Overfull \hbox (8.6687pt too wide) in paragraph at lines 100--101
+ [][] 
+ []
+
+File: images/har_v2.png Graphic file (type bmp)
+<images/har_v2.png>
+
+Overfull \hbox (8.6687pt too wide) in paragraph at lines 105--106
+ [][] 
+ []
+
+File: images/nh_v1.png Graphic file (type bmp)
+<images/nh_v1.png>
+
+Overfull \hbox (8.6687pt too wide) in paragraph at lines 110--111
+ [][] 
+ []
+
+File: images/nh_v2.png Graphic file (type bmp)
+<images/nh_v2.png>
+
+Overfull \hbox (8.6687pt too wide) in paragraph at lines 115--116
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--118
+[][] []
+ []
+
+[2]
+Underfull \hbox (badness 1655) in paragraph at lines 125--126
+\TU/TimesNewRoman(0)/m/n/10.95 effect sizes of the explanatory variable in each
+
+ []
+
+\openout3 = `icphs2023_mongolian_writeup.ent'.
+
+
+Underfull \hbox (badness 1194) in paragraph at lines 148--149
 \TU/TimesNewRoman(0)/m/n/10.95 Table 3[] summarizes the final model and output
  []
 
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 140.
-
-! Undefined control sequence.
-<recently read> \multirow 
-                          
-l.163 ^^I}
-          
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \multirow 
-                          
-l.163 ^^I}
-          
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Underfull \hbox (badness 2253) in paragraph at lines 148--149
+\TU/TimesNewRoman(0)/m/n/10.95 primarily carryover (left-to-right). Anticipator
+y
+ []
 
 
-Overfull \hbox (256.08517pt too wide) in paragraph at lines 142--164
+Underfull \hbox (badness 1484) in paragraph at lines 148--149
+\TU/TimesNewRoman(0)/m/n/10.95 coarticulation is not statistically significant.
+ In
+ []
+
+
+Underfull \hbox (badness 4024) in paragraph at lines 148--149
+\TU/TimesNewRoman(0)/m/n/10.95 contrast, non-harmonic sequences show greater
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--149
+\TU/TimesNewRoman(0)/m/n/10.95 coarticulation in the anticipatory (right-to-lef
+t)
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (4.54695pt too wide) in paragraph at lines 172--173
 [][] 
  []
 
-(./icphs2023_mongolian_writeup.bbl) (./icphs2023_mongolian_writeup.ent
 
-LaTeX Warning: Citation `effectsize' on page 2 undefined on input line 9.
+Underfull \hbox (badness 1838) in paragraph at lines 179--180
+\TU/TimesNewRoman(0)/m/n/10.95 non-harmonic sequences in Khalkha Mongolian.
+ []
 
-) [2] (./icphs2023_mongolian_writeup.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
+\TU/TimesNewRoman(0)/m/n/10.95 Specifically, while harmonic sequences show
+ []
+
+
+Underfull \hbox (badness 1769) in paragraph at lines 179--180
+\TU/TimesNewRoman(0)/m/n/10.95 greater coarticulation in the carryover directio
+n,
+ []
+
+
+Underfull \hbox (badness 6316) in paragraph at lines 179--180
+\TU/TimesNewRoman(0)/m/n/10.95 sequences counteracts the overall tendency of
+ []
+
+
+Underfull \hbox (badness 2707) in paragraph at lines 179--180
+\TU/TimesNewRoman(0)/m/n/10.95 the system to privilege carryover coarticulation
+
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 179--180
+\TU/TimesNewRoman(0)/m/n/10.95 development of harmony in grammatically non-
+ []
+
+
+Underfull \hbox (badness 2253) in paragraph at lines 181--182
+[]\TU/TimesNewRoman(0)/m/n/10.95 Recall that in Khalkha Mongolian, only one
+ []
+
+
+Underfull \hbox (badness 3098) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 patterns observed in non-harmonic sequences—
+ []
+
+
+Underfull \hbox (badness 6559) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 greater anticipatory coarticulation compared to
+ []
+
+
+Underfull \hbox (badness 2042) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 carryover coarticulation— suggests that \T3/Time
+sNewRoman(0)/m/n/10.95 /i/ \TU/TimesNewRoman(0)/m/n/10.95 has
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 a greater proclivity for perturbing the acoustic
+s
+ []
+
+
+Underfull \hbox (badness 4556) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 This suggests that \T3/TimesNewRoman(0)/m/n/10.9
+5 /i/ \TU/TimesNewRoman(0)/m/n/10.95 has high coarticulatory
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 resistance. The segment is articualtorily stable
+,
+ []
+
+
+Underfull \hbox (badness 4621) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 in other segments. Assuming that this is a
+ []
+
+
+Underfull \hbox (badness 7168) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 intrinsic to the vowel disfavors coarticulatory
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 influence. Thus, VCV sequences with \T3/TimesNew
+Roman(0)/m/n/10.95 /i/ \TU/TimesNewRoman(0)/m/n/10.95 in
+ []
+
+
+Underfull \hbox (badness 6927) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 the V2 position are well-suited to resist the
+ []
+
+
+Underfull \hbox (badness 1132) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 maintain non-harmony. There are two ways to
+ []
+
+
+Underfull \hbox (badness 3514) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 high coatticulatory resistance to prsist as non-
+
+ []
+
+
+Underfull \hbox (badness 1117) in paragraph at lines 181--182
+\TU/TimesNewRoman(0)/m/n/10.95 harmoni. Data from more languages and other
+ []
+
+[3] (./icphs2023_mongolian_writeup.bbl
+Underfull \hbox (badness 1521) in paragraph at lines 25--28
+[]\TU/TimesNewRoman(0)/m/n/10 J. J. Ohala, “Towards a universal, phonetically-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--28
+\TU/TimesNewRoman(0)/m/n/10 based, theory of vowel harmony,” in \TU/TimesNewRom
+an(0)/m/it/10 Third
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--28
+\TU/TimesNewRoman(0)/m/it/10 International Conference on Spoken Language
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--34
+\TU/TimesNewRoman(0)/m/n/10 “Language-specific patterns of vowel-to-vowel
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--34
+\TU/TimesNewRoman(0)/m/n/10 coarticulation: Acoustic structures and their
+ []
+
+
+Underfull \hbox (badness 1286) in paragraph at lines 37--43
+\TU/TimesNewRoman(0)/m/n/10 Phonology, Ithaca, NY, 2016. [Online].
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 37--43
+\TU/TimesNewRoman(0)/m/n/10 Available: $[][][][] [] [] [] [][][][][][][] [] [][
+][] [] [][][][][][][][][] [] [][][][] []
+ []
+
+
+Underfull \hbox (badness 3386) in paragraph at lines 50--53
+\TU/TimesNewRoman(0)/m/n/10 and M. Sonderegger, “Montreal forced aligner:
+ []
+
+
+Underfull \hbox (badness 2012) in paragraph at lines 50--53
+\TU/TimesNewRoman(0)/m/n/10 Trainable text-speech alignment using kaldi.” in
+ []
+
+
+Underfull \vbox (badness 2922) has occurred while \output is active []
+
+)
+(./icphs2023_mongolian_writeup.ent) [4] (./icphs2023_mongolian_writeup.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
 
  )
 (\end occurred when \ifx on line 161 was incomplete) 
 Here is how much of TeX's memory you used:
- 14892 strings out of 492970
- 308614 string characters out of 6137297
- 396685 words of memory out of 5000000
- 18726 multiletter control sequences out of 15000+600000
+ 15746 strings out of 492970
+ 322871 string characters out of 6137297
+ 417558 words of memory out of 5000000
+ 19543 multiletter control sequences out of 15000+600000
  535227 words of font info for 60 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 53i,15n,77p,10545b,563s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,14n,77p,10545b,606s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on icphs2023_mongolian_writeup.pdf (2 pages).
+Output written on icphs2023_mongolian_writeup.pdf (4 pages).

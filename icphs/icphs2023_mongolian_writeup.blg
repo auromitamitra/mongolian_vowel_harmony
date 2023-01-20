@@ -8,10 +8,9 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
-You're missing a field name---line 817 of file references.bib
- :  
- :  %  Abstract = {Three experiments tested the hypothesis that V-to-V coarticulatory organization differs in Shona and English, and that Shona- and English-speaking listeners' sensitivity to V-to-V coarticulatory effects is correspondingly language-specific. An acoustic study of Shona and English CV′CVCV trisyllables (Experiment 1) showed that the two languages differ in the carryover vs. anticipatory influences of stressed and unstressed vowels on each other. In 4IAX discrimination tests in which both Shona and English coarticulatory effects were spliced into different coarticulatory contexts (Experiment 2), Shona and English listeners perceptually compensated more (i.e., attributed more of a vowel's acoustic properties to its coarticulatory context in targeted test trials) for effects that were consistent with their linguistic experience. Similarly, when these listeners identified synthetic target vowels embedded into different vowel contexts (Experiment 3), Shona listeners compensated more (i.e., showed larger category boundary shifts) for the vowel contexts that triggered larger acoustic influences in the production study. English listeners' boundary shifts were more complicated but, when these data were combined with those from a follow-up identification study, they showed the perceptual shifts expected on the basis of the English coarticulatory findings. Overall, the relation between the production and perception data suggests that listeners are attuned to native-language coarticulatory patterns. },
-(Error may have been on previous line)
+Repeated entry---line 815 of file references.bib
+ : % @article{beddor2002
+ :                      ,
 I'm skipping whatever remains of this entry
 Repeated entry---line 1519 of file references.bib
  : @book{svantesson2005
@@ -20,47 +19,48 @@ I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty booktitle in dutta2016
 
 Done.
-You've used 1 entry,
+You've used 9 entries,
             4087 wiz_defined-function locations,
-            826 strings with 7473 characters,
-and the built_in function-call counts, 552 in all, are:
-= -- 26
-> -- 17
-< -- 0
-+ -- 8
-- -- 4
-* -- 37
-:= -- 96
-add.period$ -- 2
-call.type$ -- 1
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 34
-empty$ -- 53
-format.name$ -- 5
-if$ -- 109
+            873 strings with 8924 characters,
+and the built_in function-call counts, 6144 in all, are:
+= -- 493
+> -- 145
+< -- 40
++ -- 74
+- -- 28
+* -- 306
+:= -- 978
+add.period$ -- 18
+call.type$ -- 9
+change.case$ -- 7
+chr.to.int$ -- 78
+cite$ -- 10
+duplicate$ -- 450
+empty$ -- 508
+format.name$ -- 35
+if$ -- 1408
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 8
-newline$ -- 26
-num.names$ -- 1
-pop$ -- 26
+int.to.str$ -- 9
+missing$ -- 86
+newline$ -- 54
+num.names$ -- 9
+pop$ -- 196
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 36
+skip$ -- 481
 stack$ -- 0
-substring$ -- 0
-swap$ -- 20
-text.length$ -- 0
+substring$ -- 195
+swap$ -- 346
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 1
-warning$ -- 0
-while$ -- 1
-width$ -- 2
-write$ -- 29
+type$ -- 9
+warning$ -- 1
+while$ -- 26
+width$ -- 10
+write$ -- 113
 (There were 2 error messages)
